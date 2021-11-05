@@ -19,5 +19,6 @@
    - 위치파일 저장 기능
 
 5. git
+6. push
 
 [WIKI](https://github.com/JeongYunMi/LibraryProgram/wiki)
