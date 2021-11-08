@@ -1,15 +1,15 @@
-# LibraryProgram
-
-- 2021-2 java2 프로그램 레포입니다.
+# LibraryProgram (도서관 관리 프로그램)
 - 2021-2 java2 프로그램 저장소입니다.
-- 프로젝트 화이팅
-### 도서관 관리 프로그램
+- 도서관에서 사용하는 기본적인 도서, 회원 관리 프로그램입니다.
+- [WIKI](https://github.com/JeongYunMi/LibraryProgram/wiki)
 
-1. 참여자: 김재훈, 정윤미
-2. 주제: 도서관 관리 프로그램
-3. 개발 환경: java, MongoDB
-4. 개발 구현 목차
+## 참여자
+김재훈, 정윤미
 
+## 개발 환경
+java, MongoDB
+
+## 기능 구현 목차
    - 디자인 논의
    - GUI 구현
    - DB 컬렉션 정리
@@ -18,7 +18,3 @@
    - 도서 등록, 삭제, 대여, 반납 구현
    - 위치파일 저장 기능
 
-5. git
-6. push
-
-[WIKI](https://github.com/JeongYunMi/LibraryProgram/wiki)
