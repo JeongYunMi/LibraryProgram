@@ -13,60 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/* 회원정보를 담는 클래스입니다.*/
-class Member{
-	private int memberNum;   		//회원 고유 번호
-	private String memberName;  	//회원 이름
-	private int rentalBook;    		//빌린 권 수
-	private int totalRentalBook;   	//전체 대여 가능 권 수
-	private String memberState;		//회원 상태
-	private String rentalBookName = "";  //빌린 책 이름
-	
-	public Member(int memberNum, String memberName, int rentalBook, int totalRentalBook, String memberState) {
-		this.memberNum = memberNum;
-		this.memberName = memberName;
-		this.rentalBook = rentalBook;
-		this.totalRentalBook = totalRentalBook;
-		this.memberState = memberState;
-	}
-	
-	public int getMemberNum() {
-		return this.memberNum;
-	}
-	
-	public String getMemberName() {
-		return this.memberName;
-	}
-	
-	public int getRentalBook() {
-		return this.rentalBook;
-	}
-	
-	public int getTotalRentalBook() {
-		return this.totalRentalBook;
-	}
-	
-	public String getMemberState() {
-		return this.memberState;
-	}
-	
-	public void setRentalBook(int rentalBook) {
-		this.rentalBook = rentalBook;
-	}
-	
-	public void setMemberState(String memberState) {
-		this.memberState = memberState;
-	}
-
-	public String getRentalBookName() {
-		return rentalBookName;
-	}
-
-	public void setRentalBookName(String rentalBookName) {
-		this.rentalBookName = rentalBookName;
-	}
-}
-
 
 public class Program {
 	public static void main(String[] args) {
@@ -75,14 +21,19 @@ public class Program {
 		JPanel TopMenuName = new JPanel();
 		
 		JLabel menuName = new JLabel("회원 관리");	
-		TopMenuName.add(menuName, BorderLayout.NORTH);
+		TopMenuName.add(menuName); //여기까지 메뉴 이름 나타내는 칸
+		
+		
+		
 		
 		GuiFrame.setLayout(new BorderLayout());
-		GuiFrame.add(TopMenuName);
+		GuiFrame.add(TopMenuName, BorderLayout.NORTH);
 		
 		
 		GuiFrame.setTitle("LibraryProgram"); //Title 이름 정하기
 		GuiFrame.setSize(1600, 1000); // 프레임 크기
 		GuiFrame.setVisible(true); //프레임 출력
+		GuiFrame.setLocationRelativeTo(null); // 가운데에서 실행되도록
+		GuiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프로그램을 껐을 때 알아서 종료
 	}
 }
