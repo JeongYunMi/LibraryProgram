@@ -14,6 +14,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.Component;
 
 /*회원정보를 담는 클래스입니다.*/
 class Member{
@@ -72,7 +73,6 @@ class Member{
 public class MemberManagementGUI {
 
 	private JFrame frame;
-	private JTable table;
 	private JTextField textField;
 
 	/**
@@ -105,14 +105,7 @@ public class MemberManagementGUI {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 880, 540);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel = new JLabel("\uD68C\uC6D0\uAD00\uB9AC");
-		lblNewLabel.setFont(new Font("����", Font.BOLD, 24));
-		frame.getContentPane().add(lblNewLabel, BorderLayout.NORTH);   //현재 창 메뉴 이름 - 회원관리
-		
-		JPanel panel = new JPanel();
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		frame.getContentPane().setLayout(null);
 		
 		String header[] = {"회원번호", "회원 명", "대출 가능 권 수", "회원 상태"};
 		String MemberInfo[][] = {
@@ -120,33 +113,51 @@ public class MemberManagementGUI {
 				{"201910063", "정윤미", "3", "연체"}
 		};
 		
-		JPanel panel_1 = new JPanel();             //버튼(회원검색, 조회, 추가, 삭제 등)을 담을 panel
-		panel.add(panel_1);
-		//panel_1.setLayout(new GridLayout(0, 2, 0, 0));
+		JPanel MemberManagementPane = new JPanel();
+		MemberManagementPane.setBounds(0, 40, 864, 461);
+		frame.getContentPane().add(MemberManagementPane);
+		MemberManagementPane.setLayout(null);
+		
+		JTable MemberInfoTable = new JTable(MemberInfo, header);
+		JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
+		MemberTableScroll.setBounds(0, 92, 864, 380);
+		MemberManagementPane.add(MemberTableScroll);
+		
+		JLabel lblNewLabel = new JLabel("회원관리");
+		lblNewLabel.setBounds(0, 10, 99, 34);
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 24));
+		MemberManagementPane.add(lblNewLabel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 49, 864, 34);
+		MemberManagementPane.add(panel_1);
+		panel_1.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("회원 검색");
+		lblNewLabel_1.setBounds(572, 2, 78, 32);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblNewLabel_1);
 		
 		textField = new JTextField();
-		panel_1.add(textField);
+		textField.setBounds(644, 2, 128, 32);
 		textField.setColumns(10);
+		panel_1.add(textField);
 		
 		JButton btnNewButton_3 = new JButton("검색");
+		btnNewButton_3.setBounds(784, 3, 68, 31);
 		panel_1.add(btnNewButton_3);
 		
 		JButton btnNewButton_1 = new JButton("회원 추가");
+		btnNewButton_1.setBounds(161, -4, 85, 38);
 		panel_1.add(btnNewButton_1);
 		
 		JButton btnNewButton = new JButton("선택한 회원정보 조회");
+		btnNewButton.setBounds(0, 0, 149, 34);
 		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("회원 삭제");
+		btnNewButton_2.setBounds(258, -1, 85, 35);
 		panel_1.add(btnNewButton_2);
-		//panel.setLayout(new BorderLayout());
-		JTable MemberTable= new JTable(MemberInfo, header); // 회원 정보를 담을 JTable 
-		JScrollPane MemberTableScroll = new JScrollPane(MemberTable);
-		panel.add(MemberTableScroll, BorderLayout.CENTER);
 		
 		
 	}
