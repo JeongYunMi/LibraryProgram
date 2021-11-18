@@ -8,6 +8,7 @@
 package kr.ac.hansei.java;
 
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,10 +18,47 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+/*
+ * More 클래스에 책의 정보가 더 담겨있다
+ */
+
+class More extends JFrame{
+		
+	public More() {
+		setBounds(0,0,1600,1000);// 기본 프레임 생성
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
+		
+		String header[] = {"등록 번호","책 이름", "저자","출판일", "위치", "출판사","대여일","반납예정일","반납여부"}; //책 정보 탭
+		String BookInfo[][] = { // 책 정보에 들어갈 예시
+				{"1","자바gui","김재훈","1998-11-21","L-21","한세출판","2021-11-10","2021-11-21","대여중"	},
+				{"2","자바의 정석","정윤미","2009-11-01","L-20","한세출판","","","대여 가능"	},			
+		};
+		
+		JLabel lblNewLabel = new JLabel("책 정보"); // 책 정보 label 생성
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 30));
+		lblNewLabel.setBounds(0, 0, 1600, 100);
+		
+		getContentPane().add(lblNewLabel); //패널 생성
+		JPanel BookManagementPane = new JPanel();
+		BookManagementPane.setBounds(0,100,1600,900);
+		getContentPane().add(BookManagementPane);
+		BookManagementPane.setLayout(null);
+		
+		JTable BookInfoTable = new JTable(BookInfo, header); // 테이블 생성
+		JScrollPane BookTableScroll = new JScrollPane(BookInfoTable);
+		BookTableScroll.setBounds(0, 0, 1600, 900);
+		BookManagementPane.add(BookTableScroll);	
+		
+	}
+}
 /*
  * Book클래스에는 책시리얼넘버, 책이름, 저자,출판일, 위치, 출판사, 대여일, 반납예정일, 대여유무가 담겨있습니다
  */
@@ -102,6 +140,8 @@ class Book {
 	}
 }
 
+
+
 /*
  * 도서 관리 페이지를 담은 class이다.
  */
@@ -160,9 +200,15 @@ class BookManagementGui extends JFrame {
 		lblNewLabel_4.setBounds(800, 150, 150, 50);
 		BookManagement.add(lblNewLabel_4);
 		
-		JButton btnNewButton_1 = new JButton("더보기"); // 더보기 button 생성
-		btnNewButton_1.setBounds(1200, 150, 150, 50);
-		BookManagement.add(btnNewButton_1);
+		JButton btnMore = new JButton("더보기"); // 더보기 button 생성
+		btnMore.setBounds(1200, 150, 150, 50);
+		BookManagement.add(btnMore);
+		btnMore.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				More more = new More();
+				more.setVisible(true);
+			}
+		});
 		
 		// 메인 메뉴
 		JPanel MenuBar = new JPanel();
@@ -222,7 +268,6 @@ public class Program {
 	public static void main(String[] args) {
 		
 		JFrame GuiFrame = new JFrame(); //JFrame 객체 생성(도서관리 프로그램의 가장 큰 틀)
-		
 		JPanel TopMenuName = new JPanel();
 		
 		JLabel MenuName = new JLabel("도서 관리");
@@ -236,6 +281,7 @@ public class Program {
 				bookManagementGui.setVisible(true);
 			}
 		});
+		
 		
 		GuiFrame.setLayout(new BorderLayout());
 		GuiFrame.add(TopMenuName);
