@@ -260,6 +260,21 @@ class BookManagementGui extends JFrame {
 		});
 		RentalBook.setBounds(0, 600, 300, 150);
 		MenuBar.add(RentalBook);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(1350, 0, 250, 1000);
+		BookManagement.add(panel);
+		panel.setLayout(null);
+		
+		JButton addBook = new JButton("도서 추가");
+		addBook.setFont(new Font("굴림", Font.PLAIN, 30));
+		addBook.setBounds(0, 150, 250, 150);
+		panel.add(addBook);
+		
+		JButton deleteBook = new JButton("도서 삭제");
+		deleteBook.setFont(new Font("굴림", Font.PLAIN, 30));
+		deleteBook.setBounds(0, 300, 250, 150);
+		panel.add(deleteBook);
 	}
 	
 }
