@@ -25,6 +25,59 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 /*
+ * returnbook 클래스는 반납창을 나타낸다
+ */
+
+class ReturnBook extends JFrame {
+
+public ReturnBook() {
+
+	setBounds(100, 100, 880, 540);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//GUI 창이 꺼질 경우 알아서 프로그램 종료
+	getContentPane().setLayout(null);
+	
+	JPanel RentalBookPane = new JPanel(); 
+	RentalBookPane.setBounds(0, 40, 864, 461);
+	getContentPane().add(RentalBookPane);
+	RentalBookPane.setLayout(null);
+	
+	JPanel MemberInfoPane = new JPanel();
+	MemberInfoPane.setBounds(0, 0, 864, 182);
+	RentalBookPane.add(MemberInfoPane);
+	MemberInfoPane.setLayout(null);
+	
+	JLabel MemberInfoLabel = new JLabel("회원 정보");
+	MemberInfoLabel.setFont(new Font("돋움", Font.PLAIN, 22));
+	MemberInfoLabel.setBounds(12, 0, 97, 26);
+	MemberInfoPane.add(MemberInfoLabel);
+	
+	JPanel MemberInfoContentPane = new JPanel();
+	MemberInfoContentPane.setBounds(10, 27, 842, 145);
+	MemberInfoPane.add(MemberInfoContentPane);
+	
+	JPanel BookInfoPane = new JPanel();
+	BookInfoPane.setBounds(0, 181, 864, 280);
+	RentalBookPane.add(BookInfoPane);
+	BookInfoPane.setLayout(null);
+	
+	JLabel lblNewLabel = new JLabel("자료 정보"); 
+	lblNewLabel.setFont(new Font("돋움", Font.PLAIN, 22));
+	lblNewLabel.setBounds(12, 10, 95, 34);
+	BookInfoPane.add(lblNewLabel);
+	
+	JPanel BookInfoContentPane = new JPanel(); 
+	BookInfoContentPane.setBounds(12, 38, 840, 232);
+	BookInfoPane.add(BookInfoContentPane);
+	BookInfoContentPane.setLayout(null);
+	
+	JButton btnNewButton = new JButton("반납");
+	btnNewButton.setFont(new Font("돋움", Font.PLAIN, 22));
+	btnNewButton.setBounds(737, 191, 103, 41);
+	BookInfoContentPane.add(btnNewButton);
+	}
+}
+
+/*
  * More 클래스에 책의 정보가 더 담겨있다
  */
 
@@ -247,6 +300,8 @@ class BookManagementGui extends JFrame {
 		ReturnBook.setFont(new Font("굴림", Font.PLAIN, 30));
 		ReturnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ReturnBook returnbook = new ReturnBook();
+				returnbook.setVisible(true);
 			}
 		});
 		ReturnBook.setBounds(0, 450, 300, 150);
