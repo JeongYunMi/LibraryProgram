@@ -193,143 +193,79 @@ class Book {
 	}
 }
 
-
-
 /*
  * 도서 관리 페이지를 담은 class이다.
  */
 
 class BookManagementGui extends JFrame {
 	
-	private JPanel contentPane;
-	private JTextField SearchBar;
+	private JFrame frame;
+	private JTextField textField;
 	
 	public BookManagementGui() {
 		
+		setBounds(0, 0, 1600, 1000);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1600, 1000); 
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		getContentPane().setLayout(null);
+		setVisible(true);
 		
-		JPanel BookManagement = new JPanel(); // 1600x1000패널 생성
-		BookManagement.setBounds(0, 0, 1600, 1000);
-		contentPane.add(BookManagement);
-		BookManagement.setLayout(null);
+		String header[] = {"책 번호", "책 이름", "저자", "출판일", "위치", "출판사", "대여일","반납 예정일", "대여 유무"};  	//책 관리를 위한 JTable의 칼럼 명
+		String BookInfo[][] = {										 	
+				{"1", "자바를 자바라", "김재훈", "1998-11-21", "L-21", "자바프로그래밍", "2021-11-21", "2021-11-28", "대여 중"},//들어갈 정보 예시 자료 - 차후 DB에서 뽑아다 쓸 예정
+				{"2", "자바의 정석", "정윤미", "2000-08-21", "L-22", "자바프로그래밍", "", "", "대여 가능"}
+		};
 		
-		SearchBar = new JTextField(); //검색을 할 수 있게 text창 생성
-		SearchBar.setBounds(1100, 100, 300, 50);
-		BookManagement.add(SearchBar);
-		SearchBar.setColumns(10);
+		JPanel panel = new JPanel();	//패널 생성
+		panel.setBounds(0, 0, 1600, 1200);
+		getContentPane().add(panel);
+		panel.setLayout(null);
 		
-		JButton SearchBtn = new JButton("Search"); //Search 검색 버튼 생성
-		SearchBtn.setBounds(1400, 100, 100, 50);
-		BookManagement.add(SearchBtn);
+		JLabel BookManagement = new JLabel("도서관리");
+		BookManagement.setFont(new Font("굴림", Font.PLAIN, 30));
+		BookManagement.setHorizontalAlignment(SwingConstants.CENTER);
+		BookManagement.setBounds(0, 10, 1600, 110);
+		panel.add(BookManagement);
 		
-		JLabel lblNewLabel = new JLabel("도서 관리"); //도서 관리 text 출력
-		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 40));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(300, 0, 1300, 150);
-		BookManagement.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("책 이름"); // 책 이름 text 출력
-		lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 25));
-		lblNewLabel_1.setBounds(400, 150, 150, 50);
-		BookManagement.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("등록 번호"); // 등록 번호 text 출력
-		lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 25));
-		lblNewLabel_2.setBounds(600, 150, 150, 50);
-		BookManagement.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("대출 상태"); // 대출 상태 text 출력
-		lblNewLabel_3.setFont(new Font("굴림", Font.PLAIN, 25));
-		lblNewLabel_3.setBounds(1000, 150, 150, 50);
-		BookManagement.add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_4 = new JLabel("저자"); // 저자 text 출력
-		lblNewLabel_4.setFont(new Font("굴림", Font.PLAIN, 25));
-		lblNewLabel_4.setBounds(800, 150, 150, 50);
-		BookManagement.add(lblNewLabel_4);
-		
-		JButton btnMore = new JButton("더보기"); // 더보기 button 생성
-		btnMore.setBounds(1200, 150, 150, 50);
-		BookManagement.add(btnMore);
-		btnMore.addActionListener(new ActionListener() {
+		JButton MoreInfo = new JButton("선택한 책 정보 조회");
+		MoreInfo.setFont(new Font("굴림", Font.PLAIN, 20));
+		MoreInfo.setBounds(0, 100, 300, 50);
+		panel.add(MoreInfo);
+		MoreInfo.addActionListener(new ActionListener() {	//버튼 클릭시 More 클래스로 이동
 			public void actionPerformed(ActionEvent e) {
 				More more = new More();
 				more.setVisible(true);
 			}
 		});
 		
-		// 메인 메뉴
-		JPanel MenuBar = new JPanel();
-		MenuBar.setBounds(0, 0, 300, 1000);
-		BookManagement.add(MenuBar);
-		MenuBar.setLayout(null);
+		JButton BookAddbtn = new JButton("책 추가");
+		BookAddbtn.setFont(new Font("굴림", Font.PLAIN, 20));
+		BookAddbtn.setBounds(320, 100, 150, 50);
+		panel.add(BookAddbtn);
 		
-		JButton MenuTab = new JButton("메뉴 탭"); // 메뉴 탭 버튼 생성
-		MenuTab.setFont(new Font("굴림", Font.PLAIN, 30));
-		MenuTab.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		MenuTab.setBounds(0, 0, 300, 150);
-		MenuBar.add(MenuTab);
+		JButton BookDelete = new JButton("책 삭제");
+		BookDelete.setFont(new Font("굴림", Font.PLAIN, 20));
+		BookDelete.setBounds(490, 100, 150, 50);
+		panel.add(BookDelete);
 		
-		JButton BookManage = new JButton("도서 관리");
-		BookManage.setFont(new Font("굴림", Font.PLAIN, 30));
-		BookManage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		BookManage.setBounds(0, 150, 300, 150);
-		MenuBar.add(BookManage);
+		JLabel BookSearch = new JLabel("책 검색");
+		BookSearch.setFont(new Font("굴림", Font.BOLD, 20));
+		BookSearch.setBounds(1100, 100, 100, 50);
+		panel.add(BookSearch);
 		
-		JButton UserManage = new JButton("유저 관리");
-		UserManage.setFont(new Font("굴림", Font.PLAIN, 30));
-		UserManage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		UserManage.setBounds(0, 300, 300, 150);
-		MenuBar.add(UserManage);
+		textField = new JTextField();	//검색할 택스트필드 생성
+		textField.setBounds(1200, 100, 200, 50);
+		panel.add(textField);
+		textField.setColumns(10);
 		
-		JButton ReturnBook = new JButton("반납");
-		ReturnBook.setFont(new Font("굴림", Font.PLAIN, 30));
-		ReturnBook.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ReturnBook returnbook = new ReturnBook();
-				returnbook.setVisible(true);
-			}
-		});
-		ReturnBook.setBounds(0, 450, 300, 150);
-		MenuBar.add(ReturnBook);
+		JButton BookSearchbtn = new JButton("책 검색");
+		BookSearchbtn.setFont(new Font("굴림", Font.PLAIN, 20));
+		BookSearchbtn.setBounds(1419, 100, 150, 50);
+		panel.add(BookSearchbtn);
 		
-		JButton RentalBook = new JButton("대여");
-		RentalBook.setFont(new Font("굴림", Font.PLAIN, 30));
-		RentalBook.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		RentalBook.setBounds(0, 600, 300, 150);
-		MenuBar.add(RentalBook);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(1350, 0, 250, 1000);
-		BookManagement.add(panel);
-		panel.setLayout(null);
-		
-		JButton addBook = new JButton("도서 추가");
-		addBook.setFont(new Font("굴림", Font.PLAIN, 30));
-		addBook.setBounds(0, 150, 250, 150);
-		panel.add(addBook);
-		
-		JButton deleteBook = new JButton("도서 삭제");
-		deleteBook.setFont(new Font("굴림", Font.PLAIN, 30));
-		deleteBook.setBounds(0, 300, 250, 150);
-		panel.add(deleteBook);
+		JTable BookInfoTable = new JTable(BookInfo, header);	//JTable 생성
+		JScrollPane BookTableScroll = new JScrollPane(BookInfoTable);
+		BookTableScroll.setBounds(0, 200, 1600, 800);
+		panel.add(BookTableScroll);	
 	}
 	
 }
