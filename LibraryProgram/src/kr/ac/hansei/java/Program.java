@@ -78,12 +78,12 @@ public ReturnBook() {
 }
 
 /*
- * More 클래스에 책의 정보가 더 담겨있다
+ * AboutBook 클래스에 책의 정보가 더 담겨있다
  */
 
-class More extends JFrame{
+class AboutBook extends JFrame{
 		
-	public More() {
+	public AboutBook() {
 		setBounds(0,0,1600,1000);// 기본 프레임 생성
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -230,10 +230,10 @@ class BookManagementGui extends JFrame {
 		MoreInfo.setFont(new Font("굴림", Font.PLAIN, 20));
 		MoreInfo.setBounds(0, 100, 300, 50);
 		panel.add(MoreInfo);
-		MoreInfo.addActionListener(new ActionListener() {	//버튼 클릭시 More 클래스로 이동
+		MoreInfo.addActionListener(new ActionListener() {	//버튼 클릭시 aboutbook 클래스로 이동
 			public void actionPerformed(ActionEvent e) {
-				More more = new More();
-				more.setVisible(true);
+				AboutBook aboutbook = new AboutBook();
+				aboutbook.setVisible(true);
 			}
 		});
 		
