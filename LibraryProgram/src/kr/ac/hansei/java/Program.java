@@ -270,31 +270,69 @@ class BookManagementGui extends JFrame {
 	
 }
 
-public class Program {
-	public static void main(String[] args) {
+class MainMenu extends JFrame{
+	
+	private JFrame frame;
+	
+	public MainMenu() {
 		
-		JFrame GuiFrame = new JFrame(); //JFrame 객체 생성(도서관리 프로그램의 가장 큰 틀)
-		JPanel TopMenuName = new JPanel();
+		setBounds(0, 0, 1600, 1000);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+	
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 10, 1600, 1000);
+		getContentPane().add(panel);
+		panel.setLayout(null);
 		
-		JLabel MenuName = new JLabel("도서 관리");
-		TopMenuName.add(MenuName, BorderLayout.NORTH);
+		JLabel lblNewLabel = new JLabel("한세 도서 관리 프로그램");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 40));
+		lblNewLabel.setBounds(0, 0, 1600, 200);
+		panel.add(lblNewLabel);
 		
-		//임시 페이지 이동이 가능한 마우스 이벤트
-		JButton MovePage = new JButton("페이지 이동"); 
-		MovePage.addActionListener(new ActionListener() {
+		JButton MenuTab = new JButton("메뉴 탭");
+		MenuTab.setFont(new Font("굴림", Font.PLAIN, 30));
+		MenuTab.setBounds(0, 0, 400, 200);
+		panel.add(MenuTab);
+		
+		JButton BookManagement = new JButton("도서 관리");
+		BookManagement.setFont(new Font("굴림", Font.PLAIN, 30));
+		BookManagement.setBounds(0, 200, 400, 200);
+		panel.add(BookManagement);
+		BookManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BookManagementGui bookManagementGui = new BookManagementGui();
-				bookManagementGui.setVisible(true);
+				BookManagementGui bookmanagementgui = new BookManagementGui();
+				bookmanagementgui.setVisible(true);
 			}
 		});
 		
+		JButton UserManagement = new JButton("유저 관리");
+		UserManagement.setFont(new Font("굴림", Font.PLAIN, 30));
+		UserManagement.setBounds(0, 400, 400, 200);
+		panel.add(UserManagement);
 		
-		GuiFrame.setLayout(new BorderLayout());
-		GuiFrame.add(TopMenuName);
-		GuiFrame.add(MovePage);
+		JButton ReturnBook = new JButton("반납");
+		ReturnBook.setFont(new Font("굴림", Font.PLAIN, 30));
+		ReturnBook.setBounds(0, 600, 400, 200);
+		panel.add(ReturnBook);
+		ReturnBook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ReturnBook returnbook = new ReturnBook();
+				returnbook.setVisible(true);
+			}
+		});
 		
-		GuiFrame.setTitle("LibraryProgram"); //Title 이름 정하기
-		GuiFrame.setSize(1600, 1000); // 프레임 크기
-		GuiFrame.setVisible(true); //프레임 출력
+		JButton LoanBook = new JButton("대여");
+		LoanBook.setFont(new Font("굴림", Font.PLAIN, 30));
+		LoanBook.setBounds(0, 800, 400, 200);
+		panel.add(LoanBook);	
+		
+	}
+}
+
+public class Program {
+	public static void main(String[] args) {
+		new MainMenu();
 	}
 }
