@@ -23,14 +23,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Component;
 
-/*È¸¿øÁ¤º¸¸¦ ´ã´Â Å¬·¡½ºÀÔ´Ï´Ù.*/
+/*íšŒì›ì •ë³´ë¥¼ ë‹´ëŠ” í´ë˜ìŠ¤ì…ë‹ˆë‹¤.*/
 class Member{
-	private int memberNum;   		//È¸¿ø °íÀ¯¹øÈ£
-	private String memberName;  	//È¸¿ø ÀÌ¸§
-	private int rentalBook;    		//ºô¸° ±Ç ¼ö
-	private int totalRentalBook;   	//ÀüÃ¼ ´ë¿©°¡´É ±Ç¼ö
-	private String memberState;		//È¸¿ø »óÅÂ
-	private String rentalBookName = "";  //ºô¸° Ã¥ ÀÌ¸§
+	private int memberNum;   		//íšŒì› ê³ ìœ ë²ˆí˜¸
+	private String memberName;  	//íšŒì› ì´ë¦„
+	private int rentalBook;    		//ë¹Œë¦° ê¶Œ ìˆ˜
+	private int totalRentalBook;   	//ì „ì²´ ëŒ€ì—¬ê°€ëŠ¥ ê¶Œìˆ˜
+	private String memberState;		//íšŒì› ìƒíƒœ
+	private String rentalBookName = "";  //ë¹Œë¦° ì±… ì´ë¦„
 	
 	public Member(int memberNum, String memberName, int rentalBook, int totalRentalBook, String memberState) {
 		this.memberNum = memberNum;
@@ -109,62 +109,62 @@ class MemberManagementGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();									//±âº» ÇÁ·¹ÀÓ
+		frame = new JFrame();									//ê¸°ë³¸ í”„ë ˆì„
 		frame.setBounds(100, 100, 880, 540);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//GUI Ã¢ÀÌ ²¨Áú °æ¿ì ¾Ë¾Æ¼­ ÇÁ·Î±×·¥ Á¾·á
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//GUI ì°½ì´ êº¼ì§ˆ ê²½ìš° ì•Œì•„ì„œ í”„ë¡œê·¸ë¨ ì¢…ë£Œ
 		frame.getContentPane().setLayout(null);
 		 
-		String header[] = {"È¸¿ø¹øÈ£", "È¸¿ø ¸í", "´ëÃâ °¡´É ±Ç ¼ö", "È¸¿ø »óÅÂ"};  	//È¸¿ø °ü¸®¸¦ À§ÇÑ JTableÀÇ Ä®·³ ¸í
-		String MemberInfo[][] = {										 	//µé¾î°¥ Á¤º¸ ¿¹½Ã ÀÚ·á - Â÷ÈÄ DB¿¡¼­ »Ì¾Æ´Ù ¾µ ¿¹Á¤
-				{"2019XXXXX", "±èÀçÈÆ", "5", "´ëÃâ °¡´É"},
-				{"201910063", "Á¤À±¹Ì", "3", "¿¬Ã¼"}
+		String header[] = {"íšŒì›ë²ˆí˜¸", "íšŒì› ëª…", "ëŒ€ì¶œ ê°€ëŠ¥ ê¶Œ ìˆ˜", "íšŒì› ìƒíƒœ"};  	//íšŒì› ê´€ë¦¬ë¥¼ ìœ„í•œ JTableì˜ ì¹¼ëŸ¼ ëª…
+		String MemberInfo[][] = {										 	//ë“¤ì–´ê°ˆ ì •ë³´ ì˜ˆì‹œ ìë£Œ - ì°¨í›„ DBì—ì„œ ë½‘ì•„ë‹¤ ì“¸ ì˜ˆì •
+				{"2019XXXXX", "ê¹€ì¬í›ˆ", "5", "ëŒ€ì¶œ ê°€ëŠ¥"},
+				{"201910063", "ì •ìœ¤ë¯¸", "3", "ì—°ì²´"}
 		};
 		
 		JPanel MemberManagementPane = new JPanel();
 		MemberManagementPane.setBounds(0, 40, 864, 461);
 		frame.getContentPane().add(MemberManagementPane);
-		MemberManagementPane.setLayout(null);								//È¸¿ø°ü¸® ¸Ş´º ÅÇÀÌ ¼±ÅÃµÉ °æ¿ì È°¼ºÈ­µÉ panel
+		MemberManagementPane.setLayout(null);								//íšŒì›ê´€ë¦¬ ë©”ë‰´ íƒ­ì´ ì„ íƒë  ê²½ìš° í™œì„±í™”ë  panel
 		
 		JTable MemberInfoTable = new JTable(MemberInfo, header);
 		JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
 		MemberTableScroll.setBounds(0, 92, 864, 380);
-		MemberManagementPane.add(MemberTableScroll);						//È¸¿øÁ¤º¸ Ãâ·ÂÀ» À§ÇÑ JTable
+		MemberManagementPane.add(MemberTableScroll);						//íšŒì›ì •ë³´ ì¶œë ¥ì„ ìœ„í•œ JTable
 		
-		JLabel MenuLabelMM = new JLabel("È¸¿ø°ü¸®");
+		JLabel MenuLabelMM = new JLabel("íšŒì›ê´€ë¦¬");
 		MenuLabelMM.setBounds(0, 10, 99, 34);
 		MenuLabelMM.setFont(new Font("Dialog", Font.BOLD, 24));
-		MemberManagementPane.add(MenuLabelMM);								//¸í½ÃÀûÀ¸·Î Ç¥ÇöµÉ ¸Ş´º ÀÌ¸§
+		MemberManagementPane.add(MenuLabelMM);								//ëª…ì‹œì ìœ¼ë¡œ í‘œí˜„ë  ë©”ë‰´ ì´ë¦„
 		
 		JPanel MemberManagementButtonG = new JPanel();
 		MemberManagementButtonG.setBounds(0, 49, 864, 34);
 		MemberManagementPane.add(MemberManagementButtonG);
-		MemberManagementButtonG.setLayout(null);							//È¸¿ø °ü¸®¸¦ À§ÇÑ ¹öÆ°À» ¸ğ¾ÆµÑ ÅÇ
+		MemberManagementButtonG.setLayout(null);							//íšŒì› ê´€ë¦¬ë¥¼ ìœ„í•œ ë²„íŠ¼ì„ ëª¨ì•„ë‘˜ íƒ­
 		
-		JLabel MemberSearchLabel = new JLabel("È¸¿ø °Ë»ö");						
+		JLabel MemberSearchLabel = new JLabel("íšŒì› ê²€ìƒ‰");						
 		MemberSearchLabel.setBounds(572, 2, 78, 32);
 		MemberSearchLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		MemberManagementButtonG.add(MemberSearchLabel);						//È¸¿ø °Ë»ö ¶óº§
+		MemberManagementButtonG.add(MemberSearchLabel);						//íšŒì› ê²€ìƒ‰ ë¼ë²¨
 		
 		SearchtextField = new JTextField();
 		SearchtextField.setBounds(644, 2, 128, 32);
 		SearchtextField.setColumns(10);
-		MemberManagementButtonG.add(SearchtextField);						//È¸¿ø °Ë»öÀ» À§ÇÑ ÅØ½ºÆ®ÇÊµå
+		MemberManagementButtonG.add(SearchtextField);						//íšŒì› ê²€ìƒ‰ì„ ìœ„í•œ í…ìŠ¤íŠ¸í•„ë“œ
 		
-		JButton SearchButton = new JButton("°Ë»ö");
+		JButton SearchButton = new JButton("ê²€ìƒ‰");
 		SearchButton.setBounds(784, 3, 68, 31);
-		MemberManagementButtonG.add(SearchButton);							//°Ë»ö È®ÀÎ ¹öÆ°
+		MemberManagementButtonG.add(SearchButton);							//ê²€ìƒ‰ í™•ì¸ ë²„íŠ¼
 		
-		JButton MemberAdd = new JButton("È¸¿ø Ãß°¡");
+		JButton MemberAdd = new JButton("íšŒì› ì¶”ê°€");
 		MemberAdd.setBounds(161, -4, 85, 38);
-		MemberManagementButtonG.add(MemberAdd);								//È¸¿ø Ãß°¡ ¹öÆ°
+		MemberManagementButtonG.add(MemberAdd);								//íšŒì› ì¶”ê°€ ë²„íŠ¼
 		
-		JButton MemberDetail = new JButton("¼±ÅÃÇÑ È¸¿øÁ¤º¸ Á¶È¸");
+		JButton MemberDetail = new JButton("ì„ íƒí•œ íšŒì›ì •ë³´ ì¡°íšŒ");
 		MemberDetail.setBounds(0, 0, 149, 34);
-		MemberManagementButtonG.add(MemberDetail);							//Table¿¡¼­ ¼±ÅÃµÈ È¸¿ø¿¡ ´ëÇÑ »ó¼¼Á¤º¸ Á¶È¸ ¹öÆ°
+		MemberManagementButtonG.add(MemberDetail);							//Tableì—ì„œ ì„ íƒëœ íšŒì›ì— ëŒ€í•œ ìƒì„¸ì •ë³´ ì¡°íšŒ ë²„íŠ¼
 		
-		JButton MemberDel = new JButton("È¸¿ø »èÁ¦");
+		JButton MemberDel = new JButton("íšŒì› ì‚­ì œ");
 		MemberDel.setBounds(258, -1, 85, 35);
-		MemberManagementButtonG.add(MemberDel);								//È¸¿ø »èÁ¦ ¹öÆ°
+		MemberManagementButtonG.add(MemberDel);								//íšŒì› ì‚­ì œ ë²„íŠ¼
 	}
 
 }
