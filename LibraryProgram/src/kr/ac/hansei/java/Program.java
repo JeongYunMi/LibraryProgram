@@ -7,33 +7,164 @@
 
 package kr.ac.hansei.java;
 
-import java.awt.BorderLayout;
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import java.awt.Font;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JButton;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Component;
 
-
-public class Program {
-	public static void main(String[] args) {
-		JFrame GuiFrame = new JFrame(); //JFrame ê°ì²´ ìƒì„±(ë„ì„œê´€ë¦¬ í”„ë¡œê·¸ë¨ì˜ ê°€ì¥ í° í‹€)
-		
-		JPanel TopMenuName = new JPanel();
-		
-		JLabel menuName = new JLabel("íšŒì› ê´€ë¦¬");	
-		TopMenuName.add(menuName); //ì—¬ê¸°ê¹Œì§€ ë©”ë‰´ ì´ë¦„ ë‚˜íƒ€ë‚´ëŠ” ì¹¸
-		
-		
-		
-		
-		GuiFrame.setLayout(new BorderLayout());
-		GuiFrame.add(TopMenuName, BorderLayout.NORTH);
-		
-		
-		GuiFrame.setTitle("LibraryProgram"); //Title ì´ë¦„ ì •í•˜ê¸°
-		GuiFrame.setSize(1600, 1000); // í”„ë ˆì„ í¬ê¸°
-		GuiFrame.setVisible(true); //í”„ë ˆì„ ì¶œë ¥
-		GuiFrame.setLocationRelativeTo(null); // ê°€ìš´ë°ì—ì„œ ì‹¤í–‰ë˜ë„ë¡
-		GuiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // í”„ë¡œê·¸ë¨ì„ ê»ì„ ë•Œ ì•Œì•„ì„œ ì¢…ë£Œ
+/*È¸¿øÁ¤º¸¸¦ ´ã´Â Å¬·¡½ºÀÔ´Ï´Ù.*/
+class Member{
+	private int memberNum;   		//È¸¿ø °íÀ¯¹øÈ£
+	private String memberName;  	//È¸¿ø ÀÌ¸§
+	private int rentalBook;    		//ºô¸° ±Ç ¼ö
+	private int totalRentalBook;   	//ÀüÃ¼ ´ë¿©°¡´É ±Ç¼ö
+	private String memberState;		//È¸¿ø »óÅÂ
+	private String rentalBookName = "";  //ºô¸° Ã¥ ÀÌ¸§
+	
+	public Member(int memberNum, String memberName, int rentalBook, int totalRentalBook, String memberState) {
+		this.memberNum = memberNum;
+		this.memberName = memberName;
+		this.rentalBook = rentalBook;
+		this.totalRentalBook = totalRentalBook;
+		this.memberState = memberState;
 	}
+	
+	public int getMemberNum() {
+		return this.memberNum;
+	}
+	
+	public String getMemberName() {
+		return this.memberName;
+	}
+	
+	public int getRentalBook() {
+		return this.rentalBook;
+	}
+	
+	public int getTotalRentalBook() {
+		return this.totalRentalBook;
+	}
+	
+	public String getMemberState() {
+		return this.memberState;
+	}
+	
+	public void setRentalBook(int rentalBook) {
+		this.rentalBook = rentalBook;
+	}
+	
+	public void setMemberState(String memberState) {
+		this.memberState = memberState;
+	}
+
+	public String getRentalBookName() {
+		return rentalBookName;
+	}
+
+	public void setRentalBookName(String rentalBookName) {
+		this.rentalBookName = rentalBookName;
+	}
+}
+
+class MemberManagementGUI {
+
+	private JFrame frame;
+	private JTextField SearchtextField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MemberManagementGUI window = new MemberManagementGUI();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public MemberManagementGUI() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();									//±âº» ÇÁ·¹ÀÓ
+		frame.setBounds(100, 100, 880, 540);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//GUI Ã¢ÀÌ ²¨Áú °æ¿ì ¾Ë¾Æ¼­ ÇÁ·Î±×·¥ Á¾·á
+		frame.getContentPane().setLayout(null);
+		 
+		String header[] = {"È¸¿ø¹øÈ£", "È¸¿ø ¸í", "´ëÃâ °¡´É ±Ç ¼ö", "È¸¿ø »óÅÂ"};  	//È¸¿ø °ü¸®¸¦ À§ÇÑ JTableÀÇ Ä®·³ ¸í
+		String MemberInfo[][] = {										 	//µé¾î°¥ Á¤º¸ ¿¹½Ã ÀÚ·á - Â÷ÈÄ DB¿¡¼­ »Ì¾Æ´Ù ¾µ ¿¹Á¤
+				{"2019XXXXX", "±èÀçÈÆ", "5", "´ëÃâ °¡´É"},
+				{"201910063", "Á¤À±¹Ì", "3", "¿¬Ã¼"}
+		};
+		
+		JPanel MemberManagementPane = new JPanel();
+		MemberManagementPane.setBounds(0, 40, 864, 461);
+		frame.getContentPane().add(MemberManagementPane);
+		MemberManagementPane.setLayout(null);								//È¸¿ø°ü¸® ¸Ş´º ÅÇÀÌ ¼±ÅÃµÉ °æ¿ì È°¼ºÈ­µÉ panel
+		
+		JTable MemberInfoTable = new JTable(MemberInfo, header);
+		JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
+		MemberTableScroll.setBounds(0, 92, 864, 380);
+		MemberManagementPane.add(MemberTableScroll);						//È¸¿øÁ¤º¸ Ãâ·ÂÀ» À§ÇÑ JTable
+		
+		JLabel MenuLabelMM = new JLabel("È¸¿ø°ü¸®");
+		MenuLabelMM.setBounds(0, 10, 99, 34);
+		MenuLabelMM.setFont(new Font("Dialog", Font.BOLD, 24));
+		MemberManagementPane.add(MenuLabelMM);								//¸í½ÃÀûÀ¸·Î Ç¥ÇöµÉ ¸Ş´º ÀÌ¸§
+		
+		JPanel MemberManagementButtonG = new JPanel();
+		MemberManagementButtonG.setBounds(0, 49, 864, 34);
+		MemberManagementPane.add(MemberManagementButtonG);
+		MemberManagementButtonG.setLayout(null);							//È¸¿ø °ü¸®¸¦ À§ÇÑ ¹öÆ°À» ¸ğ¾ÆµÑ ÅÇ
+		
+		JLabel MemberSearchLabel = new JLabel("È¸¿ø °Ë»ö");						
+		MemberSearchLabel.setBounds(572, 2, 78, 32);
+		MemberSearchLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		MemberManagementButtonG.add(MemberSearchLabel);						//È¸¿ø °Ë»ö ¶óº§
+		
+		SearchtextField = new JTextField();
+		SearchtextField.setBounds(644, 2, 128, 32);
+		SearchtextField.setColumns(10);
+		MemberManagementButtonG.add(SearchtextField);						//È¸¿ø °Ë»öÀ» À§ÇÑ ÅØ½ºÆ®ÇÊµå
+		
+		JButton SearchButton = new JButton("°Ë»ö");
+		SearchButton.setBounds(784, 3, 68, 31);
+		MemberManagementButtonG.add(SearchButton);							//°Ë»ö È®ÀÎ ¹öÆ°
+		
+		JButton MemberAdd = new JButton("È¸¿ø Ãß°¡");
+		MemberAdd.setBounds(161, -4, 85, 38);
+		MemberManagementButtonG.add(MemberAdd);								//È¸¿ø Ãß°¡ ¹öÆ°
+		
+		JButton MemberDetail = new JButton("¼±ÅÃÇÑ È¸¿øÁ¤º¸ Á¶È¸");
+		MemberDetail.setBounds(0, 0, 149, 34);
+		MemberManagementButtonG.add(MemberDetail);							//Table¿¡¼­ ¼±ÅÃµÈ È¸¿ø¿¡ ´ëÇÑ »ó¼¼Á¤º¸ Á¶È¸ ¹öÆ°
+		
+		JButton MemberDel = new JButton("È¸¿ø »èÁ¦");
+		MemberDel.setBounds(258, -1, 85, 35);
+		MemberManagementButtonG.add(MemberDel);								//È¸¿ø »èÁ¦ ¹öÆ°
+	}
+
 }
