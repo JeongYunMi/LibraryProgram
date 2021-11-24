@@ -325,62 +325,63 @@ class Member{
 }
 
 class MemberManagementGUI extends JFrame{
-  private JFrame frame;
+	
+	private JFrame frame;
 	private JTextField SearchtextField;
-  
-  public MemberManagementGUI(){
-    String header[] = {"회원번호", "회원 명", "대출 가능 권 수", "회원 상태"};  	//회원 관리를 위한 JTable의 칼럼 명
-		String MemberInfo[][] = {										 	//들어갈 정보 예시 자료 - 차후 DB에서 뽑아다 쓸 예정
+	
+	public MemberManagementGUI() {
+		String header[] = {"회원번호", "회원 명", "대출 가능 권 수", "회원 상태"};	//회원 관리를 위한 JTable의 칼럼 명
+		String MemberInfo[][] = { 	//들어갈 정보 예시 자료 - 차후 DB에서 뽑아다 쓸 예정
 				{"2019XXXXX", "김재훈", "5", "대출 가능"},
-				{"201910063", "정윤미", "3", "연체"}
-		};
+				{"201910063", "정윤미", "3", "연체"},
+	};
 		
 		JPanel MemberManagementPane = new JPanel();
 		MemberManagementPane.setBounds(0, 40, 864, 461);
-		frame.getContentPane().add(MemberManagementPane);
-		MemberManagementPane.setLayout(null);								//회원관리 메뉴 탭이 선택될 경우 활성화될 panel
-		
-		JTable MemberInfoTable = new JTable(MemberInfo, header);
-		JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
-		MemberTableScroll.setBounds(0, 92, 864, 380);
-		MemberManagementPane.add(MemberTableScroll);						//회원정보 출력을 위한 JTable
-		
-		JLabel MenuLabelMM = new JLabel("회원관리");
-		MenuLabelMM.setBounds(0, 10, 99, 34);
-		MenuLabelMM.setFont(new Font("Dialog", Font.BOLD, 24));
-		MemberManagementPane.add(MenuLabelMM);								//명시적으로 표현될 메뉴 이름
-		
-		JPanel MemberManagementButtonG = new JPanel();
-		MemberManagementButtonG.setBounds(0, 49, 864, 34);
-		MemberManagementPane.add(MemberManagementButtonG);
-		MemberManagementButtonG.setLayout(null);							//회원 관리를 위한 버튼을 모아둘 탭
-		
-		JLabel MemberSearchLabel = new JLabel("회원 검색");						
-		MemberSearchLabel.setBounds(572, 2, 78, 32);
-		MemberSearchLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		MemberManagementButtonG.add(MemberSearchLabel);						//회원 검색 라벨
-		
-		SearchtextField = new JTextField();
-		SearchtextField.setBounds(644, 2, 128, 32);
-		SearchtextField.setColumns(10);
-		MemberManagementButtonG.add(SearchtextField);						//회원 검색을 위한 텍스트필드
-		
-		JButton SearchButton = new JButton("검색");
-		SearchButton.setBounds(784, 3, 68, 31);
-		MemberManagementButtonG.add(SearchButton);							//검색 확인 버튼
-		
-		JButton MemberAdd = new JButton("회원 추가");
-		MemberAdd.setBounds(161, -4, 85, 38);
-		MemberManagementButtonG.add(MemberAdd);								//회원 추가 버튼
-		
-		JButton MemberDetail = new JButton("선택한 회원정보 조회");
-		MemberDetail.setBounds(0, 0, 149, 34);
-		MemberManagementButtonG.add(MemberDetail);							//Table에서 선택된 회원에 대한 상세정보 조회 버튼
-		
-		JButton MemberDel = new JButton("회원 삭제");
-		MemberDel.setBounds(258, -1, 85, 35);
-		MemberManagementButtonG.add(MemberDel);								//회원 삭제 버튼
-  }
+	    frame.getContentPane().add(MemberManagementPane);
+	    MemberManagementPane.setLayout(null);                        //회원관리 메뉴 탭이 선택될 경우 활성화될 panel
+	      
+	    JTable MemberInfoTable = new JTable(MemberInfo, header);
+	    JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
+	    MemberTableScroll.setBounds(0, 92, 864, 380);
+	    MemberManagementPane.add(MemberTableScroll);                  //회원정보 출력을 위한 JTable
+	      
+	    JLabel MenuLabelMM = new JLabel("회원관리");
+	    MenuLabelMM.setBounds(0, 10, 99, 34);
+	    MenuLabelMM.setFont(new Font("Dialog", Font.BOLD, 24));
+	    MemberManagementPane.add(MenuLabelMM);                        //명시적으로 표현될 메뉴 이름
+	      
+	    JPanel MemberManagementButtonG = new JPanel();
+	    MemberManagementButtonG.setBounds(0, 49, 864, 34);
+	    MemberManagementPane.add(MemberManagementButtonG);
+	    MemberManagementButtonG.setLayout(null);                     //회원 관리를 위한 버튼을 모아둘 탭
+	      
+	    JLabel MemberSearchLabel = new JLabel("회원 검색");                  
+	    MemberSearchLabel.setBounds(572, 2, 78, 32);
+	    MemberSearchLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	    MemberManagementButtonG.add(MemberSearchLabel);                  //회원 검색 라벨
+	      
+	    SearchtextField = new JTextField();
+	    SearchtextField.setBounds(644, 2, 128, 32);
+	    SearchtextField.setColumns(10);
+	    MemberManagementButtonG.add(SearchtextField);                  //회원 검색을 위한 텍스트필드
+	      
+	    JButton SearchButton = new JButton("검색");
+	    SearchButton.setBounds(784, 3, 68, 31);
+	    MemberManagementButtonG.add(SearchButton);                     //검색 확인 버튼
+	      
+	    JButton MemberAdd = new JButton("회원 추가");
+	    MemberAdd.setBounds(161, -4, 85, 38);
+	    MemberManagementButtonG.add(MemberAdd);                        //회원 추가 버튼
+	      
+	    JButton MemberDetail = new JButton("선택한 회원정보 조회");
+	    MemberDetail.setBounds(0, 0, 149, 34);
+	    MemberManagementButtonG.add(MemberDetail);                     //Table에서 선택된 회원에 대한 상세정보 조회 버튼
+	      
+	    JButton MemberDel = new JButton("회원 삭제");
+	    MemberDel.setBounds(258, -1, 85, 35);
+	    MemberManagementButtonG.add(MemberDel);                        //회원 삭제 버튼
+	   	
 }
 
 class MainMenu extends JFrame{
