@@ -382,6 +382,7 @@ class MemberManagementGUI extends JFrame{
 	    MemberDel.setBounds(258, -1, 85, 35);
 	    MemberManagementButtonG.add(MemberDel);                        //회원 삭제 버튼
 	   	
+	}
 }
 
 class MainMenu extends JFrame{
