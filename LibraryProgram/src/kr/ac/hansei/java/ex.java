@@ -62,45 +62,45 @@ public class ex {
         
         JLabel lblNewLabel = new JLabel("   \uD55C\uC138 \uB3C4\uC11C \uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
         lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        lblNewLabel.setFont(new Font("±¼¸²", Font.PLAIN, 40));
+        lblNewLabel.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 40));
         lblNewLabel.setBounds(0, 0, 524, 200);
         panel.add(lblNewLabel);
         
         JButton MenuTab = new JButton("\uB300\uCD9C");
-        MenuTab.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        MenuTab.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         MenuTab.setBounds(643, 0, 240, 160);
         panel.add(MenuTab);
         
-        JButton BookManagement = new JButton("µµ¼­ °ü¸®");
-        BookManagement.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        JButton BookManagement = new JButton("ë„ì„œ ê´€ë¦¬");
+        BookManagement.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         BookManagement.setBounds(1120, 0, 240, 160);
         panel.add(BookManagement);
        
         
-        JButton UserManagement = new JButton("À¯Àú °ü¸®");
-        UserManagement.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        JButton UserManagement = new JButton("ìœ ì € ê´€ë¦¬");
+        UserManagement.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         UserManagement.setBounds(1360, 0, 240, 160);
         panel.add(UserManagement);
         
-        JButton ReturnBook = new JButton("¹İ³³");
-        ReturnBook.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        JButton ReturnBook = new JButton("ë°˜ë‚©");
+        ReturnBook.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         ReturnBook.setBounds(881, 0, 240, 160);
         panel.add(ReturnBook);
      
         
-        JButton LoanBook = new JButton("´ë¿©");
-        LoanBook.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        JButton LoanBook = new JButton("ëŒ€ì—¬");
+        LoanBook.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         LoanBook.setBounds(0, 800, 400, 200);
         panel.setBounds(0, 10, 1600, 1000);
         panel.setLayout(null);
         
-        String header[] = {"Ã¥ ¹øÈ£", "Ã¥ ÀÌ¸§", "ÀúÀÚ", "ÃâÆÇÀÏ", "À§Ä¡", "ÃâÆÇ»ç", "´ë¿©ÀÏ","¹İ³³ ¿¹Á¤ÀÏ", "´ë¿© À¯¹«"};     //Ã¥ °ü¸®¸¦ À§ÇÑ JTableÀÇ Ä®·³ ¸í
+        String header[] = {"ì±… ë²ˆí˜¸", "ì±… ì´ë¦„", "ì €ì", "ì¶œíŒì¼", "ìœ„ì¹˜", "ì¶œíŒì‚¬", "ëŒ€ì—¬ì¼","ë°˜ë‚© ì˜ˆì •ì¼", "ëŒ€ì—¬ ìœ ë¬´"};     //ì±… ê´€ë¦¬ë¥¼ ìœ„í•œ JTableì˜ ì¹¼ëŸ¼ ëª…
         String BookInfo[][] = {                                  
-              {"1", "ÀÚ¹Ù¸¦ ÀÚ¹Ù¶ó", "±èÀçÈÆ", "1998-11-21", "L-21", "ÀÚ¹ÙÇÁ·Î±×·¡¹Ö", "2021-11-21", "2021-11-28", "´ë¿© Áß"},//µé¾î°¥ Á¤º¸ ¿¹½Ã ÀÚ·á - Â÷ÈÄ DB¿¡¼­ »Ì¾Æ´Ù ¾µ ¿¹Á¤
-              {"2", "ÀÚ¹ÙÀÇ Á¤¼®", "Á¤À±¹Ì", "2000-08-21", "L-22", "ÀÚ¹ÙÇÁ·Î±×·¡¹Ö", "", "", "´ë¿© °¡´É"}
+              {"1", "ìë°”ë¥¼ ìë°”ë¼", "ê¹€ì¬í›ˆ", "1998-11-21", "L-21", "ìë°”í”„ë¡œê·¸ë˜ë°", "2021-11-21", "2021-11-28", "ëŒ€ì—¬ ì¤‘"},//ë“¤ì–´ê°ˆ ì •ë³´ ì˜ˆì‹œ ìë£Œ - ì°¨í›„ DBì—ì„œ ë½‘ì•„ë‹¤ ì“¸ ì˜ˆì •
+              {"2", "ìë°”ì˜ ì •ì„", "ì •ìœ¤ë¯¸", "2000-08-21", "L-22", "ìë°”í”„ë¡œê·¸ë˜ë°", "", "", "ëŒ€ì—¬ ê°€ëŠ¥"}
         };
         
-        JTextField textField = new JTextField();   //°Ë»öÇÒ ÅÃ½ºÆ®ÇÊµå »ı¼º
+        JTextField textField = new JTextField();   //ê²€ìƒ‰í•  íƒìŠ¤íŠ¸í•„ë“œ ìƒì„±
         textField.setBounds(1200, 100, 200, 50);
         panel.add(textField);
         textField.setColumns(10);
@@ -110,39 +110,39 @@ public class ex {
         panel1.setBounds(0, 160, 1594, 801);
         panel.add(panel1);
         
-           JLabel BookManagement1 = new JLabel("µµ¼­°ü¸®");
-           BookManagement1.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+           JLabel BookManagement1 = new JLabel("ë„ì„œê´€ë¦¬");
+           BookManagement1.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
            BookManagement1.setHorizontalAlignment(SwingConstants.CENTER);
            BookManagement1.setBounds(0, 10, 1600, 110);
            panel1.add(BookManagement1);
            
-           JButton MoreInfo = new JButton("¼±ÅÃÇÑ Ã¥ Á¤º¸ Á¶È¸");
-           MoreInfo.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+           JButton MoreInfo = new JButton("ì„ íƒí•œ ì±… ì •ë³´ ì¡°íšŒ");
+           MoreInfo.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 20));
            MoreInfo.setBounds(0, 100, 300, 50);
            panel1.add(MoreInfo);
            
               
-              JButton BookAddbtn = new JButton("Ã¥ Ãß°¡");
-              BookAddbtn.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+              JButton BookAddbtn = new JButton("ì±… ì¶”ê°€");
+              BookAddbtn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 20));
               BookAddbtn.setBounds(320, 100, 150, 50);
               panel1.add(BookAddbtn);
               
-              JButton BookDelete = new JButton("Ã¥ »èÁ¦");
-              BookDelete.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+              JButton BookDelete = new JButton("ì±… ì‚­ì œ");
+              BookDelete.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 20));
               BookDelete.setBounds(490, 100, 150, 50);
               panel1.add(BookDelete);
               
-              JLabel BookSearch = new JLabel("Ã¥ °Ë»ö");
-              BookSearch.setFont(new Font("±¼¸²", Font.BOLD, 20));
+              JLabel BookSearch = new JLabel("ì±… ê²€ìƒ‰");
+              BookSearch.setFont(new Font("êµ´ë¦¼", Font.BOLD, 20));
               BookSearch.setBounds(1100, 100, 100, 50);
               panel1.add(BookSearch);
         
-        JButton BookSearchbtn = new JButton("Ã¥ °Ë»ö");
-        BookSearchbtn.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+        JButton BookSearchbtn = new JButton("ì±… ê²€ìƒ‰");
+        BookSearchbtn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 20));
         BookSearchbtn.setBounds(1419, 100, 150, 50);
         panel1.add(BookSearchbtn);
         
-        JTable BookInfoTable = new JTable(BookInfo, header);   //JTable »ı¼º
+        JTable BookInfoTable = new JTable(BookInfo, header);   //JTable ìƒì„±
         JScrollPane BookTableScroll = new JScrollPane(BookInfoTable);
         BookTableScroll.setBounds(0, 200, 1600, 800);
         panel1.add(BookTableScroll);   
