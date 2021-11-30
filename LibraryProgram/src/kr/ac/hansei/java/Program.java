@@ -86,7 +86,7 @@ class LoneBook extends JFrame {
 
 	public LoneBook() {
 
-		setBounds(100, 100, 880, 540);
+		setBounds(0, 0, 1600, 1000);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // GUI 창이 꺼질 경우 알아서 프로그램 종료
 		getContentPane().setLayout(null);
 		setVisible(true);
@@ -459,13 +459,13 @@ class MainMenu extends JFrame {
 		frame.getContentPane().add(menuTabPanel);
 		menuTabPanel.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("   \uD55C\uC138 \uB3C4\uC11C \uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
+		JLabel lblNewLabel = new JLabel("한세 도서 관리 프로그램");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 40));
 		lblNewLabel.setBounds(0, 0, 524, 160);
 		menuTabPanel.add(lblNewLabel);
 
-		JButton LoneBook = new JButton("\uB300\uCD9C");
+		JButton LoneBook = new JButton("대출");
 		LoneBook.setFont(new Font("굴림", Font.PLAIN, 30));
 		LoneBook.setBounds(643, 0, 240, 160);
 		menuTabPanel.add(LoneBook);
@@ -475,7 +475,18 @@ class MainMenu extends JFrame {
 				setVisible(false);
 			}
 		});
-
+		
+		JButton ReturnBook = new JButton("반납");
+		ReturnBook.setFont(new Font("굴림", Font.PLAIN, 30));
+		ReturnBook.setBounds(881, 0, 240, 160);
+		menuTabPanel.add(ReturnBook);
+		ReturnBook.addActionListener(new ActionListener() { // 버튼 클릭시 aboutbook 클래스로 이동
+			public void actionPerformed(ActionEvent e) {
+				new ReturnBook();
+				setVisible(false);
+			}
+		});
+		
 		JButton BookManagement = new JButton("도서 관리");
 		BookManagement.setFont(new Font("굴림", Font.PLAIN, 30));
 		BookManagement.setBounds(1120, 0, 240, 160);
@@ -498,16 +509,7 @@ class MainMenu extends JFrame {
 			}
 		});
 
-		JButton ReturnBook = new JButton("반납");
-		ReturnBook.setFont(new Font("굴림", Font.PLAIN, 30));
-		ReturnBook.setBounds(881, 0, 240, 160);
-		menuTabPanel.add(ReturnBook);
-		ReturnBook.addActionListener(new ActionListener() { // 버튼 클릭시 aboutbook 클래스로 이동
-			public void actionPerformed(ActionEvent e) {
-				new ReturnBook();
-				setVisible(false);
-			}
-		});
+		
 
 		menuTabPanel.setBounds(0, 10, 1600, 1000);
 		menuTabPanel.setLayout(null);
