@@ -488,6 +488,6 @@ class MainMenu extends JFrame{
 
 public class Program {
    public static void main(String[] args) {
-      new MainMenu();
+      new MainGUI();
    }
 }
