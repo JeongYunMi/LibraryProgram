@@ -1,3 +1,11 @@
+/*
+ * class명: LoneBookGUI
+ * last update: 21.12.03
+ * Contributor : kimjaehoon, jeongyunmi
+ * summary : 메뉴 중 대출 탭을 클릭했을 때 나오는 GUI를 담은 class
+ * 			 회원정보 출력 JPanel, 자료 정보 출력 JPanel, 대출 버튼을 포함하고 있다.
+ * */
+
 package kr.ac.hansei.java;
 
 import java.awt.BorderLayout;
@@ -12,12 +20,18 @@ import javax.swing.JPanel;
 class LoneBookGUI extends JPanel {
 
 public LoneBookGUI() {
-	
+	/*
+	 * 기본 레이아웃을 GridLayout으로 설정
+	 * 회원정보와 자료 정보를 수직으로 출력
+	 * */
 	setLayout(new GridLayout(2, 1));
     
+	/*
+	 * 회원정보 출력을 위한 패널
+	 * 회원 정보 라벨과 회원 정보 출력 부분 패널 포함
+	 * */
     JPanel MemberInfoPane = new JPanel();
     MemberInfoPane.setLayout(new GridLayout(1, 2, 20, 5));
-    MemberInfoPane.setBounds(0, 0, 1576, 320);
     add(MemberInfoPane);
     
     JLabel MemberInfoLabel = new JLabel("회원 정보");
@@ -28,6 +42,10 @@ public LoneBookGUI() {
     MemberInfoContentPane.setSize(1537, 283);
     MemberInfoPane.add(MemberInfoContentPane);
     
+    /*
+	 * 책정보 출력을 위한 패널
+	 * 책 정보 라벨과 책 정보 출력 부분 패널, 대출 버튼 포함
+	 * */
     JPanel BookInfoPane = new JPanel();
     BookInfoPane.setLayout(new GridLayout(1, 2, 20, 5));
     BookInfoPane.setSize(1588, 441);

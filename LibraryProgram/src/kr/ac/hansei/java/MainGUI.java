@@ -1,3 +1,11 @@
+/*
+ * class명: MainGUI
+ * last update: 21.12.03
+ * Contributor : kimjaehoon, jeongyunmi
+ * summary : 전체 프레임과 상단의 메뉴바 GUI를 포함하는 class
+ * 			 메뉴 선택에 대한 액션리스너를 포함하고 있다.
+ * */
+
 package kr.ac.hansei.java;
 
 import java.awt.BorderLayout;
@@ -59,15 +67,27 @@ public class MainGUI extends JFrame{
         
         menuPanel.add(menuTabPanel);
         
-        
+        /*
+         * Card: 플로우 레이아웃, 메뉴버튼 클릭시 변경될 패널을 담고 있는 JPanel
+         * */
         JPanel Card = new JPanel();
         Card.setLayout(new FlowLayout());
         
+        /*
+         * 프레임안에는 메뉴탭을 담고있는 menuPanel이 상단에
+         * 			 메뉴버튼 클릭시 변경될 패널을 담고 있는 Card가 콘텐츠 영역에 
+         * 			 BorderLayout으로 설정
+         * */
         frame.setLayout(new BorderLayout());
         frame.add(menuPanel, BorderLayout.NORTH);
         frame.add(Card, BorderLayout.CENTER);
 
         
+        /*
+         * 각 메뉴 버튼이 눌렸을 때 발생하는 addActionListener
+         * 메뉴 버튼이 클릭되면 Card안의 기존 패널이 삭제되고
+         * 해당 메뉴에 맞는 패널이 추가된 후, updateUI를 통해 변경사항이 반영된다.
+         * */
         UserManagement.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

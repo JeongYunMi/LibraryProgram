@@ -1,3 +1,11 @@
+/*
+ * class명: BookManagementGUI
+ * last update: 21.12.03
+ * Contributor : kimjaehoon, jeongyunmi
+ * summary : 메뉴 중 책 관리 탭을 클릭했을 때 나오는 GUI를 담은 class
+ * 			 책정보 목록을 가지는 JTable과 책관리 관련 버튼(검색, 등록, 삭제 등)을 가지고 있다.
+ * */
+
 package kr.ac.hansei.java;
 
 import java.awt.BorderLayout;
@@ -13,30 +21,47 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-/*
- * 도서 관리 페이지를 담은 class이다.
- */
 
 class BookManagementGUI extends JPanel {
 	private JTextField textField;
 	
 	public BookManagementGUI() {
-		
+		/*
+		 * 기본 레이아웃을 BorderLayout으로 설정
+		 * */
 		setLayout(new BorderLayout());
 		
-		String header[] = {"책 번호", "책 이름", "저자", "출판일", "위치", "출판사", "대여일","반납 예정일", "대여 유무"};     //책 관리를 위한 JTable의 칼럼 명
+		/*
+		 * header: 책 관리를 위한 JTable의 칼럼 명
+		 * BookInfo: 들어갈 정보 예시 자료 - 차후 DB에서 뽑아다 쓸 예정
+		 * */
+		String header[] = {"책 번호", "책 이름", "저자", "출판일", "위치", "출판사", "대여일","반납 예정일", "대여 유무"};
         String BookInfo[][] = {                                  
-              {"1", "자바를 자바라", "김재훈", "1998-11-21", "L-21", "자바프로그래밍", "2021-11-21", "2021-11-28", "대여 중"},//들어갈 정보 예시 자료 - 차후 DB에서 뽑아다 쓸 예정
+              {"1", "자바를 자바라", "김재훈", "1998-11-21", "L-21", "자바프로그래밍", "2021-11-21", "2021-11-28", "대여 중"},
               {"2", "자바의 정석", "정윤미", "2000-08-21", "L-22", "자바프로그래밍", "", "", "대여 가능"}
         };
         
+        /*
+         * 책정보 출력을 위한 JTable
+         * 화면보다 길어지는 것을 처리하기 위해 JScrollPane으로 처리
+         * */
+        JTable BookInfoTable = new JTable(BookInfo, header);
+        JScrollPane BookTableScroll = new JScrollPane(BookInfoTable);
+        add(BookTableScroll, BorderLayout.CENTER);   
         
+        /*
+         * 책관리에 대한 버튼 그룹을 모아놓은 패널
+         * BookManagementGUI 패널의 상단에 위치
+         * 한 줄로 표현하기 위해 FlowLayout으로 설정
+         * */
         JPanel BookManagementButtonG = new JPanel();
-        BookManagementButtonG.setBounds(0, 160, 1584, 801);
         add(BookManagementButtonG, BorderLayout.NORTH);
-        
         BookManagementButtonG.setLayout(new FlowLayout());
         
+        /*
+         * 도서관리 메뉴 라벨 명
+         * 선택한 책 정보 조회, 책 추가, 책 삭제 버튼과 책검색을 위한 라벨 및 텍스트 필드, 검색 버튼
+         * */
         JLabel BookManagement1 = new JLabel("도서관리");
         BookManagement1.setFont(new Font("굴림", Font.PLAIN, 30));
         BookManagement1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -67,13 +92,6 @@ class BookManagementGUI extends JPanel {
         textField.setBounds(1176, 55, 229, 35);
         BookManagementButtonG.add(textField);
         textField.setColumns(10);
-        
-        JTable BookInfoTable = new JTable(BookInfo, header);   //JTable 생성
-        JScrollPane BookTableScroll = new JScrollPane(BookInfoTable);
-        BookTableScroll.setBounds(37, 106, 1509, 685);
-        add(BookTableScroll, BorderLayout.CENTER);   
-        
-        
 	}
 	
 }
