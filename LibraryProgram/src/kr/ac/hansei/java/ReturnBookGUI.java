@@ -20,8 +20,8 @@ public ReturnBookGUI() {
     MemberInfoPane.setBounds(0, 0, 1576, 320);
     add(MemberInfoPane);
     
-    JLabel MemberInfoLabel = new JLabel("È¸¿ø Á¤º¸");
-    MemberInfoLabel.setFont(new Font("µ¸¿ò", Font.PLAIN, 22));
+    JLabel MemberInfoLabel = new JLabel("íšŒì› ì •ë³´");
+    MemberInfoLabel.setFont(new Font("ë‹ì›€", Font.PLAIN, 22));
     MemberInfoPane.add(MemberInfoLabel);
     
     JPanel MemberInfoContentPane = new JPanel();
@@ -33,8 +33,8 @@ public ReturnBookGUI() {
     BookInfoPane.setSize(1588, 441);
     add(BookInfoPane);
     
-    JLabel lblNewLabel1 = new JLabel("ÀÚ·á Á¤º¸");
-    lblNewLabel1.setFont(new Font("µ¸¿ò", Font.PLAIN, 22));
+    JLabel lblNewLabel1 = new JLabel("ìë£Œ ì •ë³´");
+    lblNewLabel1.setFont(new Font("ë‹ì›€", Font.PLAIN, 22));
     lblNewLabel1.setSize(95, 34);
     BookInfoPane.add(lblNewLabel1);
     
@@ -43,8 +43,8 @@ public ReturnBookGUI() {
     BookInfoContentPane.setSize( 1539, 379);
     BookInfoPane.add(BookInfoContentPane);
     
-    JButton btnNewButton = new JButton("¹İ³³");
-    btnNewButton.setFont(new Font("µ¸¿ò", Font.PLAIN, 22));
+    JButton btnNewButton = new JButton("ë°˜ë‚©");
+    btnNewButton.setFont(new Font("ë‹ì›€", Font.PLAIN, 22));
     btnNewButton.setSize(103, 41);
     BookInfoContentPane.add(btnNewButton);
 	}

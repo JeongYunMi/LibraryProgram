@@ -7,12 +7,9 @@
 
 package kr.ac.hansei.java;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,243 +19,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 
-/*
- * returnbook 클래스는 반납창을 나타낸다
- */
 
-class ReturnBook extends JFrame {
-
-public ReturnBook() {
-
-	setBounds(100, 100, 880, 540);
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//GUI 창이 꺼질 경우 알아서 프로그램 종료
-	getContentPane().setLayout(null);
+class MainMenu extends JFrame{
 	
-	JPanel RentalBookPane = new JPanel();
-    RentalBookPane.setBounds(0, 191, 1588, 760);
-    getContentPane().add(RentalBookPane);
-    RentalBookPane.setLayout(null);
-    
-    JPanel MemberInfoPane = new JPanel();
-    MemberInfoPane.setLayout(null);
-    MemberInfoPane.setBounds(0, 0, 1576, 320);
-    RentalBookPane.add(MemberInfoPane);
-    
-    JLabel MemberInfoLabel = new JLabel("회원 정보");
-    MemberInfoLabel.setFont(new Font("돋움", Font.PLAIN, 22));
-    MemberInfoLabel.setBounds(12, 0, 97, 26);
-    MemberInfoPane.add(MemberInfoLabel);
-    
-    JPanel MemberInfoContentPane = new JPanel();
-    MemberInfoContentPane.setBounds(10, 27, 1537, 283);
-    MemberInfoPane.add(MemberInfoContentPane);
-    
-    JPanel BookInfoPane = new JPanel();
-    BookInfoPane.setLayout(null);
-    BookInfoPane.setBounds(0, 319, 1588, 441);
-    RentalBookPane.add(BookInfoPane);
-    
-    JLabel lblNewLabel1 = new JLabel("자료 정보");
-    lblNewLabel1.setFont(new Font("돋움", Font.PLAIN, 22));
-    lblNewLabel1.setBounds(12, 10, 95, 34);
-    BookInfoPane.add(lblNewLabel1);
-    
-    JPanel BookInfoContentPane = new JPanel();
-    BookInfoContentPane.setLayout(null);
-    BookInfoContentPane.setBounds(12, 38, 1539, 379);
-    BookInfoPane.add(BookInfoContentPane);
-    
-    JButton btnNewButton = new JButton("반납");
-    btnNewButton.setFont(new Font("돋움", Font.PLAIN, 22));
-    btnNewButton.setBounds(1436, 338, 103, 41);
-    BookInfoContentPane.add(btnNewButton);
-	}
-}
-
-
-class LoneBook extends JFrame {
-
-public LoneBook() {
-
-	setBounds(100, 100, 880, 540);
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//GUI 창이 꺼질 경우 알아서 프로그램 종료
-	getContentPane().setLayout(null);
+	private static JFrame frame;
+	private static JTextField SearchtextField;
+	private static JTextField textField;
 	
-	JPanel RentalBookPane = new JPanel();
-    RentalBookPane.setBounds(0, 191, 1588, 760);
-    getContentPane().add(RentalBookPane);
-    RentalBookPane.setLayout(null);
-    
-    JPanel MemberInfoPane = new JPanel();
-    MemberInfoPane.setLayout(null);
-    MemberInfoPane.setBounds(0, 0, 1576, 320);
-    RentalBookPane.add(MemberInfoPane);
-    
-    JLabel MemberInfoLabel = new JLabel("회원 정보");
-    MemberInfoLabel.setFont(new Font("돋움", Font.PLAIN, 22));
-    MemberInfoLabel.setBounds(12, 0, 97, 26);
-    MemberInfoPane.add(MemberInfoLabel);
-    
-    JPanel MemberInfoContentPane = new JPanel();
-    MemberInfoContentPane.setBounds(10, 27, 1537, 283);
-    MemberInfoPane.add(MemberInfoContentPane);
-    
-    JPanel BookInfoPane = new JPanel();
-    BookInfoPane.setLayout(null);
-    BookInfoPane.setBounds(0, 319, 1588, 441);
-    RentalBookPane.add(BookInfoPane);
-    
-    JLabel lblNewLabel1 = new JLabel("자료 정보");
-    lblNewLabel1.setFont(new Font("돋움", Font.PLAIN, 22));
-    lblNewLabel1.setBounds(12, 10, 95, 34);
-    BookInfoPane.add(lblNewLabel1);
-    
-    JPanel BookInfoContentPane = new JPanel();
-    BookInfoContentPane.setLayout(null);
-    BookInfoContentPane.setBounds(12, 38, 1539, 379);
-    BookInfoPane.add(BookInfoContentPane);
-    
-    JButton btnNewButton = new JButton("대출");
-    btnNewButton.setFont(new Font("돋움", Font.PLAIN, 22));
-    btnNewButton.setBounds(1436, 338, 103, 41);
-    BookInfoContentPane.add(btnNewButton);
-	}
-}
-
-
-/*
- * AboutBook 클래스에 책의 정보가 더 담겨있다
- */
-
-class AboutBook extends JFrame{
-		
-	public AboutBook() {
-		setBounds(0,0,1600,1000);// 기본 프레임 생성
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(null);
-		
-		String header[] = {"등록 번호","책 이름", "저자","출판일", "위치", "출판사","대여일","반납예정일","반납여부"}; //책 정보 탭
-		String BookInfo[][] = { // 책 정보에 들어갈 예시
-				{"1","자바gui","김재훈","1998-11-21","L-21","한세출판","2021-11-10","2021-11-21","대여중"	},
-				{"2","자바의 정석","정윤미","2009-11-01","L-20","한세출판","","","대여 가능"	},			
-		};
-		
-		JLabel lblNewLabel = new JLabel("책 정보"); // 책 정보 label 생성
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 30));
-		lblNewLabel.setBounds(0, 0, 1600, 100);
-		
-		getContentPane().add(lblNewLabel); //패널 생성
-		JPanel BookManagementPane = new JPanel();
-		BookManagementPane.setBounds(0,100,1600,900);
-		getContentPane().add(BookManagementPane);
-		BookManagementPane.setLayout(null);
-		
-		JTable BookInfoTable = new JTable(BookInfo, header); // 테이블 생성
-		JScrollPane BookTableScroll = new JScrollPane(BookInfoTable);
-		BookTableScroll.setBounds(0, 0, 1600, 900);
-		BookManagementPane.add(BookTableScroll);	
-		
-	}
-}
-/*
- * Book클래스에는 책시리얼넘버, 책이름, 저자,출판일, 위치, 출판사, 대여일, 반납예정일, 대여유무가 담겨있습니다
- */
-
-class Book {
-	
-	public static Vector<Book> BookVec = new Vector<Book>(30); //Vector 선언
-	private String bookNum; // 책시리얼넘버
-	private String bookName; // 책이름
-	private String bookWriter; //저자
-	private String bookBorn; // 출판일
-	private String bookLocation; // 위치
-	private String bookPublisher; //출판사
-	private String loanDate; //대여일
-	private String loanDdate; //반납예정일
-	private String loanState; //대여유무
-	
-	public Book(String bookNum, String bookName, String bookWriter, String bookBorn, String bookLocation,
-			String bookPublisher, String loanDate, String loanDdate, String loanState) { 
-		this.bookNum = bookNum;
-		this.bookName = bookName;
-		this.bookWriter = bookWriter;
-		this.bookBorn = bookBorn;
-		this.bookLocation = bookLocation;
-		this.bookPublisher = bookPublisher;
-		this.loanDate = loanDate;
-		this.loanDdate = loanDdate;
-		this.loanState = loanState;
-	}
-	
-	public Book() {	} //생성자
-	
-	public String getBookName() { //책시리얼넘버, 책이름, 저자, 출판일, 위치, 출판사는 변하지 않는 내용이니 get 메소드 사용
-		return this.bookName;
-	}
-	
-	public String getbookNum() { 
-		return this.bookNum;
-	}
-	
-	public String getBookWriter() {
-		return this.bookWriter;
-	}
-
-	public String getBookBorn() {
-		return this.bookBorn;
-	}
-	
-	public String getBookLocation() {
-		return this.bookLocation;
-	}
-
-	public String getBookPublisher() {
-		return this.bookPublisher;
-	}
-
-	public String getLoanDate() { //대여일, 대여 반납일, 대여유무는 변하기 때문에 set메소드를 써준다.
-		return this.loanDate;
-	}
-
-	public void setLoanDate(String loanDate) {
-		this.loanDate = loanDate;
-	}
-
-	public String getLoanDdate() {
-		return loanDdate;
-	}
-	
-	public void setLoanDdate(String loanDdate) {
-		this.loanDdate = loanDdate;
-	}
-
-	public String getLoanState() {
-		return loanState;
-	}
-	
-	public void setLoanState(String loanState) {
-		this.loanState = loanState;
-	}
-}
-
-/*
- * 도서 관리 페이지를 담은 class이다.
- */
-
-class BookManagementGui extends JFrame {
-	
-	private JFrame frame;
-	private JTextField textField;
-	
-	public BookManagementGui() {
-		
-		setBounds(0, 0, 1600, 1000);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(null);
-		setVisible(true);
+	static void BookManagementGui() {
 		
 		String header[] = {"책 번호", "책 이름", "저자", "출판일", "위치", "출판사", "대여일","반납 예정일", "대여 유무"};     //책 관리를 위한 JTable의 칼럼 명
         String BookInfo[][] = {                                  
@@ -269,7 +38,7 @@ class BookManagementGui extends JFrame {
         
         JPanel BookManagementPanel = new JPanel();
         BookManagementPanel.setBounds(0, 160, 1584, 801);
-        getContentPane().add(BookManagementPanel);
+        frame.add(BookManagementPanel);
         BookManagementPanel.setLayout(null);
         
         JLabel BookManagement1 = new JLabel("도서관리");
@@ -315,71 +84,17 @@ class BookManagementGui extends JFrame {
         textField.setColumns(10);
 	}
 	
-}
-
-/*회원정보를 담는 클래스입니다.*/
-class Member{
-	private int memberNum;   		//회원 고유번호
-	private String memberName;  	//회원 이름
-	private int rentalBook;    		//빌린 권 수
-	private int totalRentalBook;   	//전체 대여가능 권수
-	private String memberState;		//회원 상태
-	private String rentalBookName = "";  //빌린 책 이름
 	
-	public Member(int memberNum, String memberName, int rentalBook, int totalRentalBook, String memberState) {
-		this.memberNum = memberNum;
-		this.memberName = memberName;
-		this.rentalBook = rentalBook;
-		this.totalRentalBook = totalRentalBook;
-		this.memberState = memberState;
-	}
-	
-	public int getMemberNum() {
-		return this.memberNum;
-	}
-	
-	public String getMemberName() {
-		return this.memberName;
-	}
-	
-	public int getRentalBook() {
-		return this.rentalBook;
-	}
-	
-	public int getTotalRentalBook() {
-		return this.totalRentalBook;
-	}
-	
-	public String getMemberState() {
-		return this.memberState;
-	}
-	
-	public void setRentalBook(int rentalBook) {
-		this.rentalBook = rentalBook;
-	}
-	
-	public void setMemberState(String memberState) {
-		this.memberState = memberState;
-	}
-
-	public String getRentalBookName() {
-		return rentalBookName;
-	}
-
-	public void setRentalBookName(String rentalBookName) {
-		this.rentalBookName = rentalBookName;
-	}
-}
-
-class MemberManagementGUI extends JFrame{
-  private JFrame frame;
-	private JTextField SearchtextField;
-  
-  public MemberManagementGUI(){
+	static void MemberManagementGUI(){
     	
 		JPanel MemberManagementPane = new JPanel();
         MemberManagementPane.setBounds(0, 171, 1584, 777);
-        getContentPane().add(MemberManagementPane);
+        try {
+			frame.add(MemberManagementPane);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         MemberManagementPane.setLayout(null);
         
         String header[] = {"회원번호", "회원 명", "대출 가능 권 수", "회원 상태"};  	//회원 관리를 위한 JTable의 칼럼 명
@@ -404,6 +119,7 @@ class MemberManagementGUI extends JFrame{
         MemberManagementButtonG.setLayout(null);
         MemberManagementButtonG.setBounds(0, 49, 1572, 34);
         MemberManagementPane.add(MemberManagementButtonG);
+        MemberManagementButtonG.setVisible(true);
         
         JLabel MemberSearchLabel = new JLabel("회원 검색");
         MemberSearchLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -431,11 +147,48 @@ class MemberManagementGUI extends JFrame{
         MemberDel.setBounds(258, -1, 85, 35);
         MemberManagementButtonG.add(MemberDel);
   }
-}
-
-class MainMenu extends JFrame{
 	
-	private JFrame frame;
+	void LoneBook() {
+		
+		JPanel RentalBookPane = new JPanel();
+	    RentalBookPane.setBounds(0, 191, 1588, 760);
+	    frame.add(RentalBookPane);
+	    RentalBookPane.setLayout(null);
+	    
+	    JPanel MemberInfoPane = new JPanel();
+	    MemberInfoPane.setLayout(null);
+	    MemberInfoPane.setBounds(0, 0, 1576, 320);
+	    RentalBookPane.add(MemberInfoPane);
+	    
+	    JLabel MemberInfoLabel = new JLabel("회원 정보");
+	    MemberInfoLabel.setFont(new Font("돋움", Font.PLAIN, 22));
+	    MemberInfoLabel.setBounds(12, 0, 97, 26);
+	    MemberInfoPane.add(MemberInfoLabel);
+	    
+	    JPanel MemberInfoContentPane = new JPanel();
+	    MemberInfoContentPane.setBounds(10, 27, 1537, 283);
+	    MemberInfoPane.add(MemberInfoContentPane);
+	    
+	    JPanel BookInfoPane = new JPanel();
+	    BookInfoPane.setLayout(null);
+	    BookInfoPane.setBounds(0, 319, 1588, 441);
+	    RentalBookPane.add(BookInfoPane);
+	    
+	    JLabel lblNewLabel1 = new JLabel("자료 정보");
+	    lblNewLabel1.setFont(new Font("돋움", Font.PLAIN, 22));
+	    lblNewLabel1.setBounds(12, 10, 95, 34);
+	    BookInfoPane.add(lblNewLabel1);
+	    
+	    JPanel BookInfoContentPane = new JPanel();
+	    BookInfoContentPane.setLayout(null);
+	    BookInfoContentPane.setBounds(12, 38, 1539, 379);
+	    BookInfoPane.add(BookInfoContentPane);
+	    
+	    JButton btnNewButton = new JButton("대출");
+	    btnNewButton.setFont(new Font("돋움", Font.PLAIN, 22));
+	    btnNewButton.setBounds(1436, 338, 103, 41);
+	    BookInfoContentPane.add(btnNewButton);
+		}
 	
 	public MainMenu() {
 		
@@ -463,17 +216,44 @@ class MainMenu extends JFrame{
         LoneBook.setFont(new Font("굴림", Font.PLAIN, 30));
         LoneBook.setBounds(643, 0, 240, 160);
         menuTabPanel.add(LoneBook);
+        LoneBook.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				LoneBook();
+			}
+		});
+        
         
         JButton BookManagement = new JButton("도서 관리");
         BookManagement.setFont(new Font("굴림", Font.PLAIN, 30));
         BookManagement.setBounds(1120, 0, 240, 160);
         menuTabPanel.add(BookManagement);
+        BookManagement.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				BookManagementGui();
+
+			}
+		});
        
         
         JButton UserManagement = new JButton("유저 관리");
         UserManagement.setFont(new Font("굴림", Font.PLAIN, 30));
         UserManagement.setBounds(1360, 0, 240, 160);
         menuTabPanel.add(UserManagement);
+        UserManagement.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MemberManagementGUI();	
+			}
+		});
+        
         
         JButton ReturnBook = new JButton("반납");
         ReturnBook.setFont(new Font("굴림", Font.PLAIN, 30));

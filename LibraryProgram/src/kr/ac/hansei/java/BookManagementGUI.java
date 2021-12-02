@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /*
- * µµ¼­ °ü¸® ÆäÀÌÁö¸¦ ´ãÀº classÀÌ´Ù.
+ * ë„ì„œ ê´€ë¦¬ í˜ì´ì§€ë¥¼ ë‹´ì€ classì´ë‹¤.
  */
 
 class BookManagementGUI extends JPanel {
@@ -24,10 +24,10 @@ class BookManagementGUI extends JPanel {
 		
 		setLayout(new BorderLayout());
 		
-		String header[] = {"Ã¥ ¹øÈ£", "Ã¥ ÀÌ¸§", "ÀúÀÚ", "ÃâÆÇÀÏ", "À§Ä¡", "ÃâÆÇ»ç", "´ë¿©ÀÏ","¹İ³³ ¿¹Á¤ÀÏ", "´ë¿© À¯¹«"};     //Ã¥ °ü¸®¸¦ À§ÇÑ JTableÀÇ Ä®·³ ¸í
+		String header[] = {"ì±… ë²ˆí˜¸", "ì±… ì´ë¦„", "ì €ì", "ì¶œíŒì¼", "ìœ„ì¹˜", "ì¶œíŒì‚¬", "ëŒ€ì—¬ì¼","ë°˜ë‚© ì˜ˆì •ì¼", "ëŒ€ì—¬ ìœ ë¬´"};     //ì±… ê´€ë¦¬ë¥¼ ìœ„í•œ JTableì˜ ì¹¼ëŸ¼ ëª…
         String BookInfo[][] = {                                  
-              {"1", "ÀÚ¹Ù¸¦ ÀÚ¹Ù¶ó", "±èÀçÈÆ", "1998-11-21", "L-21", "ÀÚ¹ÙÇÁ·Î±×·¡¹Ö", "2021-11-21", "2021-11-28", "´ë¿© Áß"},//µé¾î°¥ Á¤º¸ ¿¹½Ã ÀÚ·á - Â÷ÈÄ DB¿¡¼­ »Ì¾Æ´Ù ¾µ ¿¹Á¤
-              {"2", "ÀÚ¹ÙÀÇ Á¤¼®", "Á¤À±¹Ì", "2000-08-21", "L-22", "ÀÚ¹ÙÇÁ·Î±×·¡¹Ö", "", "", "´ë¿© °¡´É"}
+              {"1", "ìë°”ë¥¼ ìë°”ë¼", "ê¹€ì¬í›ˆ", "1998-11-21", "L-21", "ìë°”í”„ë¡œê·¸ë˜ë°", "2021-11-21", "2021-11-28", "ëŒ€ì—¬ ì¤‘"},//ë“¤ì–´ê°ˆ ì •ë³´ ì˜ˆì‹œ ìë£Œ - ì°¨í›„ DBì—ì„œ ë½‘ì•„ë‹¤ ì“¸ ì˜ˆì •
+              {"2", "ìë°”ì˜ ì •ì„", "ì •ìœ¤ë¯¸", "2000-08-21", "L-22", "ìë°”í”„ë¡œê·¸ë˜ë°", "", "", "ëŒ€ì—¬ ê°€ëŠ¥"}
         };
         
         
@@ -37,30 +37,30 @@ class BookManagementGUI extends JPanel {
         
         BookManagementButtonG.setLayout(new FlowLayout());
         
-        JLabel BookManagement1 = new JLabel("µµ¼­°ü¸®");
-        BookManagement1.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        JLabel BookManagement1 = new JLabel("ë„ì„œê´€ë¦¬");
+        BookManagement1.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         BookManagement1.setHorizontalAlignment(SwingConstants.CENTER);
         BookManagementButtonG.add(BookManagement1);
            
-        JButton MoreInfo = new JButton("¼±ÅÃÇÑ Ã¥ Á¤º¸ Á¶È¸");
-        MoreInfo.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+        JButton MoreInfo = new JButton("ì„ íƒí•œ ì±… ì •ë³´ ì¡°íšŒ");
+        MoreInfo.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 20));
         BookManagementButtonG.add(MoreInfo);
            
               
-        JButton BookAddbtn = new JButton("Ã¥ Ãß°¡");
-        BookAddbtn.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+        JButton BookAddbtn = new JButton("ì±… ì¶”ê°€");
+        BookAddbtn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 20));
         BookManagementButtonG.add(BookAddbtn);
               
-        JButton BookDelete = new JButton("Ã¥ »èÁ¦");
-        BookDelete.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+        JButton BookDelete = new JButton("ì±… ì‚­ì œ");
+        BookDelete.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 20));
         BookManagementButtonG.add(BookDelete);
               
-        JLabel BookSearch = new JLabel("Ã¥ °Ë»ö");
-        BookSearch.setFont(new Font("±¼¸²", Font.BOLD, 20));
+        JLabel BookSearch = new JLabel("ì±… ê²€ìƒ‰");
+        BookSearch.setFont(new Font("êµ´ë¦¼", Font.BOLD, 20));
         BookManagementButtonG.add(BookSearch);
         
-        JButton BookSearchbtn = new JButton("Ã¥ °Ë»ö");
-        BookSearchbtn.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+        JButton BookSearchbtn = new JButton("ì±… ê²€ìƒ‰");
+        BookSearchbtn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 20));
         BookManagementButtonG.add(BookSearchbtn);
         
         textField = new JTextField();
@@ -68,7 +68,7 @@ class BookManagementGUI extends JPanel {
         BookManagementButtonG.add(textField);
         textField.setColumns(10);
         
-        JTable BookInfoTable = new JTable(BookInfo, header);   //JTable »ı¼º
+        JTable BookInfoTable = new JTable(BookInfo, header);   //JTable ìƒì„±
         JScrollPane BookTableScroll = new JScrollPane(BookInfoTable);
         BookTableScroll.setBounds(37, 106, 1509, 685);
         add(BookTableScroll, BorderLayout.CENTER);   

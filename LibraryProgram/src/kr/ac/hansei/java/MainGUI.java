@@ -25,36 +25,36 @@ public class MainGUI extends JFrame{
 		frame = new JFrame();
 		
         /*
-         * menuPanel: ÇÃ·Î¿ì ·¹ÀÌ¾Æ¿ô, °¡¿îµ¥ Áß½É Á¤·Ä, ÁÂ¿ì°£°İ 200px, »óÇÏ°£°İ 20px
-         * 			  ÇÁ·Î±×·¥ Å¸ÀÌÆ²("ÇÑ¼¼ µµ¼­ °ü¸® ÇÁ·Î±×·¥")ÀÎ JLabel, programTitleLabel °ú 
-         * 			  ¸Ş´º¹öÆ°(´ëÃâ, ¹İ³³, µµ¼­°ü¸®, À¯Àú°ü¸®)ÀÌ ¸ğ¾ÆÁ®ÀÖ´Â JPanel, menuTabPanelÀ» Æ÷ÇÔÇÏ°í ÀÖÀ½.
+         * menuPanel: í”Œë¡œìš° ë ˆì´ì•„ì›ƒ, ê°€ìš´ë° ì¤‘ì‹¬ ì •ë ¬, ì¢Œìš°ê°„ê²© 200px, ìƒí•˜ê°„ê²© 20px
+         * 			  í”„ë¡œê·¸ë¨ íƒ€ì´í‹€("í•œì„¸ ë„ì„œ ê´€ë¦¬ í”„ë¡œê·¸ë¨")ì¸ JLabel, programTitleLabel ê³¼ 
+         * 			  ë©”ë‰´ë²„íŠ¼(ëŒ€ì¶œ, ë°˜ë‚©, ë„ì„œê´€ë¦¬, ìœ ì €ê´€ë¦¬)ì´ ëª¨ì•„ì ¸ìˆëŠ” JPanel, menuTabPanelì„ í¬í•¨í•˜ê³  ìˆìŒ.
          * */
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 200, 20));
         
-        JLabel programTitleLabel = new JLabel("ÇÑ¼¼ µµ¼­ °ü¸® ÇÁ·Î±×·¥");
+        JLabel programTitleLabel = new JLabel("í•œì„¸ ë„ì„œ ê´€ë¦¬ í”„ë¡œê·¸ë¨");
         programTitleLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        programTitleLabel.setFont(new Font("±¼¸²", Font.PLAIN, 40));
+        programTitleLabel.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 40));
         menuPanel.add(programTitleLabel);
         
         
         JPanel menuTabPanel = new JPanel();
         menuTabPanel.setLayout(new GridLayout(1, 4, 10, 0));
         
-        JButton LoneBook = new JButton("´ëÃâ");
-        LoneBook.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        JButton LoneBook = new JButton("ëŒ€ì¶œ");
+        LoneBook.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         menuTabPanel.add(LoneBook);
         
-        JButton ReturnBook = new JButton("¹İ³³");
-        ReturnBook.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        JButton ReturnBook = new JButton("ë°˜ë‚©");
+        ReturnBook.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         menuTabPanel.add(ReturnBook);
         
-        JButton BookManagement = new JButton("µµ¼­ °ü¸®");
-        BookManagement.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        JButton BookManagement = new JButton("ë„ì„œ ê´€ë¦¬");
+        BookManagement.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         menuTabPanel.add(BookManagement);
         
-        JButton UserManagement = new JButton("À¯Àú °ü¸®");
-        UserManagement.setFont(new Font("±¼¸²", Font.PLAIN, 30));
+        JButton UserManagement = new JButton("ìœ ì € ê´€ë¦¬");
+        UserManagement.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 30));
         menuTabPanel.add(UserManagement);
         
         menuPanel.add(menuTabPanel);
@@ -110,7 +110,7 @@ public class MainGUI extends JFrame{
         
         
         /*
-         * frame: GUI ±âº» ¼³Á¤ 1600*1000»çÀÌÁîÀÌ¸ç, gui Ã¢ÀÌ ²¨Áü°ú µ¿½Ã¿¡ ÇÁ·Î±×·¥ Á¾·á, ¹Ù·Î º¸ÀÌµµ·Ï ¼³Á¤µÇ¾î ÀÖ´Ù.
+         * frame: GUI ê¸°ë³¸ ì„¤ì • 1600*1000ì‚¬ì´ì¦ˆì´ë©°, gui ì°½ì´ êº¼ì§ê³¼ ë™ì‹œì— í”„ë¡œê·¸ë¨ ì¢…ë£Œ, ë°”ë¡œ ë³´ì´ë„ë¡ ì„¤ì •ë˜ì–´ ìˆë‹¤.
          * */
         frame.setBounds(0, 0, 1600, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

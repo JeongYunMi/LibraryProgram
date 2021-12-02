@@ -19,13 +19,13 @@ class MemberManagementGUI extends JPanel{
 		  
 	        setLayout(new BorderLayout());
 	        
-	        String header[] = {"È¸¿ø¹øÈ£", "È¸¿ø ¸í", "´ëÃâ °¡´É ±Ç ¼ö", "È¸¿ø »óÅÂ"};  	//È¸¿ø °ü¸®¸¦ À§ÇÑ JTableÀÇ Ä®·³ ¸í
-			String MemberInfo[][] = {										 	//µé¾î°¥ Á¤º¸ ¿¹½Ã ÀÚ·á - Â÷ÈÄ DB¿¡¼­ »Ì¾Æ´Ù ¾µ ¿¹Á¤
-					{"2019XXXXX", "±èÀçÈÆ", "5", "´ëÃâ °¡´É"},
-					{"201910063", "Á¤À±¹Ì", "3", "¿¬Ã¼"}
+	        String header[] = {"íšŒì›ë²ˆí˜¸", "íšŒì› ëª…", "ëŒ€ì¶œ ê°€ëŠ¥ ê¶Œ ìˆ˜", "íšŒì› ìƒíƒœ"};  	//íšŒì› ê´€ë¦¬ë¥¼ ìœ„í•œ JTableì˜ ì¹¼ëŸ¼ ëª…
+			String MemberInfo[][] = {										 	//ë“¤ì–´ê°ˆ ì •ë³´ ì˜ˆì‹œ ìë£Œ - ì°¨í›„ DBì—ì„œ ë½‘ì•„ë‹¤ ì“¸ ì˜ˆì •
+					{"2019XXXXX", "ê¹€ì¬í›ˆ", "5", "ëŒ€ì¶œ ê°€ëŠ¥"},
+					{"201910063", "ì •ìœ¤ë¯¸", "3", "ì—°ì²´"}
 			};
 	        
-	        JTable MemberInfoTable = new JTable(MemberInfo, header);   //JTable »ı¼º
+	        JTable MemberInfoTable = new JTable(MemberInfo, header);   //JTable ìƒì„±
 	        
 	        JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
 	        add(MemberTableScroll, BorderLayout.CENTER);
@@ -36,16 +36,16 @@ class MemberManagementGUI extends JPanel{
 	        
 	        
 	        
-	        JButton MemberAdd = new JButton("È¸¿ø Ãß°¡");
+	        JButton MemberAdd = new JButton("íšŒì› ì¶”ê°€");
 	        MemberManagementButtonG.add(MemberAdd);
 	        
-	        JButton MemberDetail = new JButton("¼±ÅÃÇÑ È¸¿øÁ¤º¸ Á¶È¸");
+	        JButton MemberDetail = new JButton("ì„ íƒí•œ íšŒì›ì •ë³´ ì¡°íšŒ");
 	        MemberManagementButtonG.add(MemberDetail);
 	        
-	        JButton MemberDel = new JButton("È¸¿ø »èÁ¦");
+	        JButton MemberDel = new JButton("íšŒì› ì‚­ì œ");
 	        MemberManagementButtonG.add(MemberDel);
 	        
-	        JLabel MemberSearchLabel = new JLabel("È¸¿ø °Ë»ö");
+	        JLabel MemberSearchLabel = new JLabel("íšŒì› ê²€ìƒ‰");
 	        MemberSearchLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	        MemberManagementButtonG.add(MemberSearchLabel);
 	        
@@ -53,7 +53,7 @@ class MemberManagementGUI extends JPanel{
 	        SearchtextField.setColumns(10);
 	        MemberManagementButtonG.add(SearchtextField);
 	        
-	        JButton SearchButton = new JButton("°Ë»ö");
+	        JButton SearchButton = new JButton("ê²€ìƒ‰");
 	        MemberManagementButtonG.add(SearchButton);
 	  }
 	}
