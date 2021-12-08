@@ -20,6 +20,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
 
 
 class BookManagementGUI extends JPanel {
@@ -48,6 +55,52 @@ class BookManagementGUI extends JPanel {
         JTable BookInfoTable = new JTable(BookInfo, header);
         JScrollPane BookTableScroll = new JScrollPane(BookInfoTable);
         add(BookTableScroll, BorderLayout.CENTER);   
+        
+        /*
+         * db추가
+         */
+        
+        MongoClient mongoClient = null;        
+        DBCursor cursor = null;
+        try {
+        	mongoClient = new MongoClient("localhost", 27017);
+        	DB db = mongoClient.getDB("BookDB");
+        	DBCollection coll = db.getCollection("BookInfo");
+        	cursor = coll.find();
+        	
+        	String[] columnNames = {"책번호", "책 이름", "저자", "출판일", "위치"
+        			,"출판사", "대여일", "반납 예정일", "대여 유무"
+        			};
+        	DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+        	
+        	while(cursor.hasNext()) {
+        		DBObject obj = cursor.next();
+                int BookNumber = (int)obj.get("BookNumber");
+                String title = (String)obj.get("title");
+                String author = (String)obj.get("author");
+                int releasedate = (int)obj.get("releasedate");
+                String location = (String)obj.get("location");
+                String publisher = (String)obj.get("publisher");
+                int loandate = (int)obj.get("loandate");
+                int returndate = (int)obj.get("returndate");
+                String loanexistence = (String)obj.get("loanexistence");
+                model.addRow(new Object[] { BookNumber, title, author, releasedate, 
+                		location, publisher, loandate, returndate, loanexistence 
+                });
+        	}
+        	BookInfoTable.setModel(model);
+        	
+        	cursor.close();
+        	mongoClient.close();
+        	}finally {
+        		if(cursor!=null)
+        			cursor.close();
+        	}
+        if(mongoClient!=null) {
+        	mongoClient.close();
+        
+        	
+        }
         
         /*
          * 책관리에 대한 버튼 그룹을 모아놓은 패널
