@@ -19,6 +19,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
 
 class MemberManagementGUI extends JPanel{
 		private JTextField SearchtextField;
@@ -46,6 +53,45 @@ class MemberManagementGUI extends JPanel{
 	        JTable MemberInfoTable = new JTable(MemberInfo, header);
 	        JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
 	        add(MemberTableScroll, BorderLayout.CENTER);
+	        
+	        /*
+	         * db추가
+	         */
+	        
+	        MongoClient mongoClient = null;        
+	        DBCursor cursor = null;
+	        try {
+	        	mongoClient = new MongoClient("localhost", 27017);
+	        	DB db = mongoClient.getDB("BookDB");
+	        	DBCollection coll = db.getCollection("MemberInfo");
+	        	cursor = coll.find();
+	        	
+	        	String[] columnNames = {"회원번호", "회원 명", "대출 가능 권 수", "회원 상태"};
+	        	DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+	        	
+	        	while(cursor.hasNext()) {
+	        		DBObject obj = cursor.next();
+	                int memberNum = (int)obj.get("memberNum");
+	                String memberName = (String)obj.get("memberName");
+	                int rentalBook = (int)obj.get("rentalBook");
+	                String memberState = (String)obj.get("memberState");
+	                model.addRow(new Object[] { memberNum, memberName, rentalBook, memberState, 
+	                });
+	        	}
+	        	MemberInfoTable.setModel(model);
+	        	
+	        	cursor.close();
+	        	mongoClient.close();
+	        	}finally {
+	        		if(cursor!=null)
+	        			cursor.close();
+	        	}
+	        if(mongoClient!=null) {
+	        	mongoClient.close();
+	        
+	        	
+	        }
+	        
 	        
 	        /*
 	         * 멤버 관리에 대한 버튼 그룹을 모아놓은 패널
