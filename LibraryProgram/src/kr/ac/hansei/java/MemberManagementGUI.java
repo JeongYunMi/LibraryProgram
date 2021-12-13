@@ -11,6 +11,8 @@ package kr.ac.hansei.java;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -28,7 +30,8 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
 class MemberManagementGUI extends JPanel{
-		private JTextField SearchtextField;
+		private DBConnection DbConnection = new DBConnection();
+		JTable MemberInfoTable = new JTable();
 	  
 	  public MemberManagementGUI(){
 		    /*
@@ -54,43 +57,7 @@ class MemberManagementGUI extends JPanel{
 	        JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
 	        add(MemberTableScroll, BorderLayout.CENTER);
 	        
-	        /*
-	         * db추가
-	         */
 	        
-	        MongoClient mongoClient = null;        
-	        DBCursor cursor = null;
-	        try {
-	        	mongoClient = new MongoClient("localhost", 27017);
-	        	DB db = mongoClient.getDB("BookDB");
-	        	DBCollection coll = db.getCollection("MemberInfo");
-	        	cursor = coll.find();
-	        	
-	        	String[] columnNames = {"회원번호", "회원 명", "대출 가능 권 수", "회원 상태"};
-	        	DefaultTableModel model = new DefaultTableModel(columnNames, 0);
-	        	
-	        	while(cursor.hasNext()) {
-	        		DBObject obj = cursor.next();
-	                int memberNum = (int)obj.get("memberNum");
-	                String memberName = (String)obj.get("memberName");
-	                int rentalBook = (int)obj.get("rentalBook");
-	                String memberState = (String)obj.get("memberState");
-	                model.addRow(new Object[] { memberNum, memberName, rentalBook, memberState, 
-	                });
-	        	}
-	        	MemberInfoTable.setModel(model);
-	        	
-	        	cursor.close();
-	        	mongoClient.close();
-	        	}finally {
-	        		if(cursor!=null)
-	        			cursor.close();
-	        	}
-	        if(mongoClient!=null) {
-	        	mongoClient.close();
-	        
-	        	
-	        }
 	        
 	        
 	        /*
@@ -105,26 +72,44 @@ class MemberManagementGUI extends JPanel{
 	        
 	        /*
 	         * 도서관리 메뉴 라벨 명
-	         * 회원 추가, 선택한 회원정보 조회, 회원 삭제 버튼과 회원 검색을 위한 라벨 및 텍스트 필드, 검색 버튼
+	         * 회원 추가, 회원 삭제 버튼, 새로고침 버튼
 	         * */
 	        JButton MemberAdd = new JButton("회원 추가");
 	        MemberManagementButtonG.add(MemberAdd);
 	        
-	        JButton MemberDetail = new JButton("선택한 회원정보 조회");
-	        MemberManagementButtonG.add(MemberDetail);
-	        
 	        JButton MemberDel = new JButton("회원 삭제");
 	        MemberManagementButtonG.add(MemberDel);
 	        
-	        JLabel MemberSearchLabel = new JLabel("회원 검색");
-	        MemberSearchLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	        MemberManagementButtonG.add(MemberSearchLabel);
+	        JButton MemberRefresh = new JButton("정보 새로고침");
+	        MemberManagementButtonG.add(MemberRefresh);	        
 	        
-	        SearchtextField = new JTextField();
-	        SearchtextField.setColumns(10);
-	        MemberManagementButtonG.add(SearchtextField);
+	        /*
+	         * db추가
+	         */
+	        DefaultTableModel model = DbConnection.GetMemberData();
+	        MemberInfoTable.setModel(model);
+	        	
 	        
-	        JButton SearchButton = new JButton("검색");
-	        MemberManagementButtonG.add(SearchButton);
+	        
+	        MemberAdd.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					AddMemberGUI AddMemberGui = new AddMemberGUI();
+				}
+			});
+	        
+	        MemberRefresh.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					JTable MemberInfoTable = new JTable(MemberInfo, header);
+				    JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
+				    add(MemberTableScroll, BorderLayout.CENTER);
+					DefaultTableModel modelRe = DbConnection.GetMemberData();
+					MemberInfoTable.setModel(model);
+				}
+			});
 	  }
 	}
