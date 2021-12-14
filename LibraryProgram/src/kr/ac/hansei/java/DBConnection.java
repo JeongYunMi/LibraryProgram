@@ -33,6 +33,24 @@ public class DBConnection {
 	    }
 	 }
 	 
+	 public void DeleteMember(int number) {
+	     try {
+	     	
+	     	DBCollection collection = db.getCollection("MemberInfo");
+	    	
+	    	BasicDBObject document = new BasicDBObject();
+	        document.put("memberNum", number);
+	  
+	        //Insert Data01
+	        collection.remove(document);
+	
+	    	mongoClient.close();
+	    	}finally {
+	    		if(mongoClient!=null)
+	    			mongoClient.close();
+	    }
+	 }
+	 
 	 public DefaultTableModel GetMemberData() {      
 		 try {
 			 

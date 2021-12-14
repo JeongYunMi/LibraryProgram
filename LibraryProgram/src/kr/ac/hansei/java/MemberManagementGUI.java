@@ -99,16 +99,21 @@ class MemberManagementGUI extends JPanel{
 				}
 			});
 	        
+	        MemberDel.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					DeleteMemberGUI DelMemberGui = new DeleteMemberGUI();
+				}
+			});
+	        
 	        MemberRefresh.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					
-					JTable MemberInfoTable = new JTable(MemberInfo, header);
-				    JScrollPane MemberTableScroll = new JScrollPane(MemberInfoTable);
-				    add(MemberTableScroll, BorderLayout.CENTER);
 					DefaultTableModel modelRe = DbConnection.GetMemberData();
-					MemberInfoTable.setModel(model);
+					//System.out.print(modelRe);
+					//MemberInfoTable.setModel(model);
 				}
 			});
 	  }
