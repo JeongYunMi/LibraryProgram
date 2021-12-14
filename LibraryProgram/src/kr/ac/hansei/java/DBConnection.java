@@ -3,6 +3,10 @@ package kr.ac.hansei.java;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Calendar;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -54,7 +58,7 @@ public class DBConnection{
 		
 	}
   */
-  public void AddMember(int number, String name, String phone) {
+	public void AddMember(int number, String name, String phone) {
 	     try {
 	     	
 	     	DBCollection collection = db.getCollection("MemberInfo");
@@ -111,6 +115,79 @@ public class DBConnection{
 			 
 	    }finally {
 	    }
+	 }
+	 
+	 public String GetRentalMember(int number) {
+		 DBCursor cursor = null;
+		 DBCollection coll = db.getCollection("MemberInfo");
+		 
+		 BasicDBObject whereQuery = new BasicDBObject();
+		 whereQuery.put("memberNum", number);
+		 cursor = coll.find(whereQuery);
+		 
+		 String rentalMemberStr = "";
+		 
+		 while (cursor.hasNext()) {
+			 DBObject obj = cursor.next();
+			 rentalMemberStr += String.valueOf(obj.get("memberNum"));
+			 rentalMemberStr += "," + (String)obj.get("memberName");
+			 rentalMemberStr += "," + (String)obj.get("memberPhone");
+		 }
+		 
+		 return rentalMemberStr;
+	 }
+	 
+	 public String GetRentalBook(String number) {
+		 DBCursor cursor = null;
+		 DBCollection coll = db.getCollection("BookInfo");
+		 
+		 BasicDBObject whereQuery = new BasicDBObject();
+		 whereQuery.put("BookNumber", number);
+		 cursor = coll.find(whereQuery);
+		 
+		 String rentalBookStr = "";
+		 
+		 while (cursor.hasNext()) {
+			 DBObject obj = cursor.next();
+			 rentalBookStr += (String)obj.get("title");
+			 rentalBookStr += "," + (String)obj.get("BookNumber");
+			 rentalBookStr += "," + (String)obj.get("author");
+			 rentalBookStr += "," + (String)obj.get("releasedate");
+			 rentalBookStr += "," + (String)obj.get("publisher");
+			 rentalBookStr += "," + String.valueOf(obj.get("loanPerson"));
+		 }
+		 
+		 return rentalBookStr;
+	 }
+	 
+	 public void AddRentalBook(String Booknumber, int memberNumber) throws ParseException {
+		 DBCursor cursor = null;
+		 DBCollection coll = db.getCollection("BookInfo");
+		 
+		 Date now = new Date();
+		 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		 
+		 Calendar cal = Calendar.getInstance(); 
+		 cal.setTime(now);
+		 cal.add(Calendar.DATE, 7);
+		 
+		 
+		 BasicDBObject updateQuery = new BasicDBObject();
+		 BasicDBObject updateList = new BasicDBObject();
+		 updateList.append("loanPerson", memberNumber);
+		 updateList.append("loanDate", format.format(now));
+		 updateList.append("returnDate", format.format(cal.getTime()));
+		 /*
+		 updateQuery.append("$set", new BasicDBObject().append("loanPerson", memberNumber));
+		 updateQuery.append("$set", new BasicDBObject().append("loanDate", format.format(now)));
+		 updateQuery.append("$set", new BasicDBObject().append("returnDate", format.format(cal.getTime())));
+		 */
+		 updateQuery.append("$set", updateList);
+	     BasicDBObject searchQuery = new BasicDBObject().append("BookNumber", Booknumber);
+	     coll.update(searchQuery, updateQuery);
+	     
+ 
+		 JOptionPane.showMessageDialog(null, "성공적으로 대여하였습니다. 반납일은"+format.format(cal.getTime())+"입니다.");
 	 }
 
 }
