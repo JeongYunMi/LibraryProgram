@@ -132,5 +132,28 @@ public class DBConnection{
 		 
 		 return rentalMemberStr;
 	 }
+	 
+	 public String GetRentalBook(String number) {
+		 DBCursor cursor = null;
+		 DBCollection coll = db.getCollection("BookInfo");
+		 
+		 BasicDBObject whereQuery = new BasicDBObject();
+		 whereQuery.put("BookNumber", number);
+		 cursor = coll.find(whereQuery);
+		 
+		 String rentalBookStr = "";
+		 
+		 while (cursor.hasNext()) {
+			 DBObject obj = cursor.next();
+			 rentalBookStr += (String)obj.get("title");
+			 rentalBookStr += "," + (String)obj.get("BookNumber");
+			 rentalBookStr += "," + (String)obj.get("author");
+			 rentalBookStr += "," + (String)obj.get("releasedate");
+			 rentalBookStr += "," + (String)obj.get("publisher");
+			 rentalBookStr += "," + (String)obj.get("loanPerson");
+		 }
+		 
+		 return rentalBookStr;
+	 }
 
 }

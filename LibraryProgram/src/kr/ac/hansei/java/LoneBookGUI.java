@@ -28,6 +28,8 @@ class LoneBookGUI extends JPanel {
 	private JTextField TextBookNum;
 	
 	String[] member = new String[3];
+	String[] book = new String[6];
+	boolean possible = false;
 
 public LoneBookGUI() {
 	/*
@@ -170,6 +172,36 @@ public LoneBookGUI() {
 				MemberPhoneLabel.setText("회원 전화번호: " + member[2]);
 			}else {
 				JOptionPane.showMessageDialog(null, "일치하는 회원정보가 없습니다.");
+			}
+		}
+	});
+    
+    BookSearchbtn.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			String temp = DbConnection.GetRentalBook(TextBookNum.getText());;
+			book = temp.split(",");
+			
+			if(temp.endsWith(",")) {
+				possible = true;
+			}
+			
+			//System.out.print("\n\n\n\nbook"+ temp);
+			if(temp != "") {
+				BookNameLabel.setText("책 이름: " + book[0]);
+				BookNumberLabel.setText("책 번호: " + book[1]);
+				BookAuthorLabel.setText("지은이: " + book[2]);
+				BookdateLabel.setText("출판일: " + book[3]);
+				BookPubLabel.setText("출판사: " + book[4]);
+				if(possible) {
+					BookRentalLabel.setText("책 대여 가능 여부: 가능");
+				}else{
+					BookRentalLabel.setText("책 대여 가능 여부: 불가");
+				}		
+			}else {
+				JOptionPane.showMessageDialog(null, "일치하는 책 정보가 없습니다.");
 			}
 		}
 	});
