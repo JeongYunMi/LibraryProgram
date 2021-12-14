@@ -25,7 +25,7 @@ public class DBConnection{
 	
 	MongoClient mongoClient = new MongoClient("localhost", 27017);
 	DB db = mongoClient.getDB("BookDB");
-	
+	/*
 	public void AddBook() {
 					
 		DBCollection coll = db.getCollection("BookInfo");
@@ -53,7 +53,7 @@ public class DBConnection{
 		DBCollection coll = db.getCollection("BookInfo");
 		
 	}
-  
+  */
   public void AddMember(int number, String name, String phone) {
 	     try {
 	     	
@@ -87,8 +87,6 @@ public class DBConnection{
 	
 	    	mongoClient.close();
 	    	}finally {
-	    		if(mongoClient!=null)
-	    			mongoClient.close();
 	    }
 	 }
 	 
@@ -109,14 +107,9 @@ public class DBConnection{
 		            model.addRow(new Object[] { memberNum, memberName, memberPhone });
 		     }
 			 
-			 cursor.close();
-			 mongoClient.close();
-			 
 			 return model;
 			 
 	    }finally {
-	    	 if(mongoClient!=null)
-	    		 mongoClient.close();
 	    }
 	 }
 

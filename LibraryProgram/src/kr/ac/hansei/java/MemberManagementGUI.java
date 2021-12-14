@@ -112,8 +112,8 @@ class MemberManagementGUI extends JPanel{
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					DefaultTableModel modelRe = DbConnection.GetMemberData();
-					//System.out.print(modelRe);
-					//MemberInfoTable.setModel(model);
+					MemberInfoTable.setModel(modelRe);
+					updateUI();
 				}
 			});
 	  }
