@@ -54,7 +54,7 @@ public class DBConnection{
 		
 	}
   */
-  public void AddMember(int number, String name, String phone) {
+	public void AddMember(int number, String name, String phone) {
 	     try {
 	     	
 	     	DBCollection collection = db.getCollection("MemberInfo");
@@ -111,6 +111,26 @@ public class DBConnection{
 			 
 	    }finally {
 	    }
+	 }
+	 
+	 public String GetRentalMember(int number) {
+		 DBCursor cursor = null;
+		 DBCollection coll = db.getCollection("MemberInfo");
+		 
+		 BasicDBObject whereQuery = new BasicDBObject();
+		 whereQuery.put("memberNum", number);
+		 cursor = coll.find(whereQuery);
+		 
+		 String rentalMemberStr = "";
+		 
+		 while (cursor.hasNext()) {
+			 DBObject obj = cursor.next();
+			 rentalMemberStr += String.valueOf(obj.get("memberNum"));
+			 rentalMemberStr += "," + (String)obj.get("memberName");
+			 rentalMemberStr += "," + (String)obj.get("memberPhone");
+		 }
+		 
+		 return rentalMemberStr;
 	 }
 
 }
