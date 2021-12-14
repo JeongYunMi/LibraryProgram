@@ -14,6 +14,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -29,7 +30,8 @@ class LoneBookGUI extends JPanel {
 	
 	String[] member = new String[3];
 	String[] book = new String[6];
-	boolean possible = false;
+	boolean possibleBook = false;
+	boolean possibleMember = false;
 
 public LoneBookGUI() {
 	/*
@@ -170,6 +172,7 @@ public LoneBookGUI() {
 				MemberNameLabel.setText("회원 이름: " + member[1]);
 				MemberNumberLabel.setText("회원 번호: " + member[0]);
 				MemberPhoneLabel.setText("회원 전화번호: " + member[2]);
+				possibleMember = true;
 			}else {
 				JOptionPane.showMessageDialog(null, "일치하는 회원정보가 없습니다.");
 			}
@@ -185,23 +188,44 @@ public LoneBookGUI() {
 			book = temp.split(",");
 			
 			if(temp.endsWith(",")) {
-				possible = true;
+				possibleBook = true;
 			}
 			
-			//System.out.print("\n\n\n\nbook"+ temp);
 			if(temp != "") {
 				BookNameLabel.setText("책 이름: " + book[0]);
 				BookNumberLabel.setText("책 번호: " + book[1]);
 				BookAuthorLabel.setText("지은이: " + book[2]);
 				BookdateLabel.setText("출판일: " + book[3]);
 				BookPubLabel.setText("출판사: " + book[4]);
-				if(possible) {
+				if(possibleBook) {
 					BookRentalLabel.setText("책 대여 가능 여부: 가능");
 				}else{
 					BookRentalLabel.setText("책 대여 가능 여부: 불가");
 				}		
 			}else {
 				JOptionPane.showMessageDialog(null, "일치하는 책 정보가 없습니다.");
+			}
+		}
+	});
+    
+    
+    btnNewButton.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			try {
+				if(possibleBook && possibleMember) {
+					DbConnection.AddRentalBook(book[1], Integer.valueOf(member[0]));
+				}else {
+					JOptionPane.showMessageDialog(null, "대여할 수 있는 책이 아니거나, 회원 입력이 제대로 완료되지 않았습니다.");
+				}
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
 	});
