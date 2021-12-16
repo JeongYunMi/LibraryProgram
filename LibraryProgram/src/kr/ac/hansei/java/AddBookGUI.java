@@ -25,13 +25,16 @@ class AddBookGUI extends JFrame{
 	public static void AddBookGUI() {
 		
 		/*
-		 * 새로운 창 열기
+		 * 호출될시 새 프레임 열기
 		 */
 		JFrame frame = new JFrame();
 		frame.setBounds(0, 0, 600, 800);
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 	     
+		/*
+		 * TextField과 label을 받을 패널
+		 */
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 600, 800);
 		frame.getContentPane().add(panel);
@@ -96,6 +99,11 @@ class AddBookGUI extends JFrame{
 		LabelBAdd.setBounds(0, 10, 588, 146);
 		panel.add(LabelBAdd);
    
+		/*
+         * BtnAddBtn: 책 등록 버튼
+         * addActionListener로 입력한 정보를 DbConnection 클래스의 AddBook로 보낸다.
+         * 이후 창을 안보이게 처리
+         * */
 		JButton BtnAddBtn = new JButton("추가하기");
 		BtnAddBtn.setBounds(159, 674, 242, 67);
 		panel.add(BtnAddBtn);

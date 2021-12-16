@@ -20,11 +20,17 @@ public class DeleteBookGUI {
 
 	public static void DeleteBookGUI() {
 		
+		/*
+		 * 호출될시 새 프레임 열기
+		 */
 		JFrame frame = new JFrame();
 		frame.setBounds(0, 0, 600, 800);
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		
+		/*
+		 * 패널 선언
+		 */
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 600, 800);
 		frame.getContentPane().add(panel);
@@ -39,18 +45,23 @@ public class DeleteBookGUI {
 		JTextField textBNumber = new JTextField();
 		textBNumber.setBounds(159, 166, 196, 23);
 		panel.add(textBNumber);
-			
+		
+		/*
+		 * 삭제 클릭시
+		 * TextField를 DeleteBook으로 보내준다
+		 * 이후 창을 안 보이게 처리
+		 */
 		JButton btnNewButton = new JButton("삭제");	
 		btnNewButton.setBounds(0, 618, 575, 140);
 		panel.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() { 
 	         @Override
 	         public void actionPerformed(ActionEvent e) {
-	            if(e.getSource()==btnNewButton) {
+	            if(e.getSource()==btnNewButton) { 
 	            	DbConnection.DeleteBook(textBNumber.getText());
 	            	frame.setVisible(false);
 	            }
-	         }   
+	         }
 		});	
 	}
 }

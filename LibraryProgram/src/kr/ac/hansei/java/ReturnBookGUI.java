@@ -117,8 +117,8 @@ class ReturnBookGUI extends JPanel {
 	    add(btnNewButton, BorderLayout.SOUTH);
 	    
 	    /*
-	     * 텍스트 필드에 받은 값을 GetRentalBook로 반환
-	     * DB에서 정보를 받아와 값 출력
+	     * 텍스트 필드에 받은 값을 GetRentalBook으로 반환
+	     * 값을 받아와 값 출력
 	     */
 	  	    
 	    BookSearchbtn.addActionListener(new ActionListener() { 
@@ -148,7 +148,8 @@ class ReturnBookGUI extends JPanel {
 		});
 
 	    /*
-	     * 반납버튼
+	     * 반납버튼 클릭시
+	     * AddReturnBook으로 TextBookNum 넘겨준다
 	     */
 	    btnNewButton.addActionListener(new ActionListener() { 
 	         @Override

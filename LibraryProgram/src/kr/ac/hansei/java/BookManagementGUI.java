@@ -92,17 +92,14 @@ class BookManagementGUI extends JPanel {
 	    BookManagement1.setHorizontalAlignment(SwingConstants.CENTER);
 	    BookManagementButtonG.add(BookManagement1);
 
+	    
+	    /*
+	     * 책 추가, 새로고침, 책 삭제 버튼
+	     */
 	    JButton BookAddbtn = new JButton("책 추가");
 	    BookAddbtn.setFont(new Font("굴림", Font.PLAIN, 20));
 	    BookManagementButtonG.add(BookAddbtn);
-	    BookAddbtn.addActionListener(new ActionListener() {
-		@Override
-			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==BookAddbtn) {
-					AddBookGUI.AddBookGUI();
-			}
-		}
-	});
+	    
         JButton BookRefresh = new JButton("새로고침");
         BookRefresh.setFont(new Font("굴림", Font.PLAIN, 20));
 	    BookManagementButtonG.add(BookRefresh); 
@@ -110,18 +107,38 @@ class BookManagementGUI extends JPanel {
 	    JButton BookDelete = new JButton("책 삭제");
 	    BookDelete.setFont(new Font("굴림", Font.PLAIN, 20));
 	    BookManagementButtonG.add(BookDelete);
-	    BookDelete.addActionListener(new ActionListener() { 
-    	@Override
-    		public void actionPerformed(ActionEvent e) {
-    			if(e.getSource()==BookDelete) 
-    				DeleteBookGUI.DeleteBookGUI();
-		}
-    });
+
     
 	    /*
-	     * 
+	     * AddBook버튼 클릭시
+	     * AddBookGUI 호출
 	     */
+	    BookAddbtn.addActionListener(new ActionListener() {
+		@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==BookAddbtn) {
+					AddBookGUI.AddBookGUI();
+			}
+		}
+	});  
+	    /*
+	     * BookDelete클릭시 
+	     * DeleteBookGUI() 호출
+	     */
+	    BookDelete.addActionListener(new ActionListener() { 
+	    	@Override
+	    		public void actionPerformed(ActionEvent e) {
+	    			if(e.getSource()==BookDelete) {
+	    				DeleteBookGUI.DeleteBookGUI();
+	    			}
+			}
+	    });
 	    
+	    /*
+	     * BookRefesh 클릭시
+	     * DbConnection.getBookData를 해서
+	     * BookTable을 Update한다
+	     */
 	    BookRefresh.addActionListener(new ActionListener() { 
 		@Override
 			public void actionPerformed(ActionEvent e) {
