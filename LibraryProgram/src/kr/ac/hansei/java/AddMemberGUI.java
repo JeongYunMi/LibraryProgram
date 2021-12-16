@@ -1,5 +1,6 @@
 package kr.ac.hansei.java;
 
+
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -76,7 +77,7 @@ public class AddMemberGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				DbConnection.AddMember(Integer.valueOf(TextMemberNum.getText()), TextMemberName.getText(), TextMemberPhone.getText());
+				DbConnection.AddMember(TextMemberNum.getText(), TextMemberName.getText(), TextMemberPhone.getText());
 				setVisible(false);
 			}
 		});

@@ -35,8 +35,7 @@ public class DeleteMemberGUI extends JFrame {
         
         TextMemberNum = new JTextField();
         TextMemberNum.setColumns(15);
-        PanelInputNumber.add(TextMemberNum);
-        
+        PanelInputNumber.add(TextMemberNum);  
         add(PanelInputNumber);
         
         JButton ButtonDelMember = new JButton("회원 삭제");
@@ -44,11 +43,10 @@ public class DeleteMemberGUI extends JFrame {
         add(ButtonDelMember);
         
         ButtonDelMember.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				DbConnection.DeleteMember(Integer.valueOf(TextMemberNum.getText()));
+				DbConnection.DeleteMember(TextMemberNum.getText());
 				setVisible(false);
 			}
 		});

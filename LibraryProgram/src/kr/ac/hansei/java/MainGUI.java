@@ -23,12 +23,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class MainGUI extends JFrame{
-	private JFrame frame;
+	public JFrame frame;
 	MemberManagementGUI memberManagementGUI = new MemberManagementGUI();
 	BookManagementGUI bookManagementGUI = new BookManagementGUI();
 	LoneBookGUI loneBookGUI = new LoneBookGUI();
 	ReturnBookGUI returnBookGUI = new ReturnBookGUI();
-	
+
 	public MainGUI() {
 		frame = new JFrame();
 		
@@ -137,3 +137,4 @@ public class MainGUI extends JFrame{
         frame.setVisible(true);
 	}
 }
+

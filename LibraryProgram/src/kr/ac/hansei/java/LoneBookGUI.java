@@ -166,7 +166,7 @@ public LoneBookGUI() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			String temp = DbConnection.GetRentalMember(Integer.valueOf(TextMemberNum.getText()));;
+			String temp = DbConnection.GetRentalMember(TextMemberNum.getText());;
 			member = temp.split(",");
 			if(temp != "") {
 				MemberNameLabel.setText("회원 이름: " + member[1]);
@@ -216,7 +216,7 @@ public LoneBookGUI() {
 			// TODO Auto-generated method stub
 			try {
 				if(possibleBook && possibleMember) {
-					DbConnection.AddRentalBook(book[1], Integer.valueOf(member[0]));
+					DbConnection.AddRentalBook(book[1],member[0]);
 				}else {
 					JOptionPane.showMessageDialog(null, "대여할 수 있는 책이 아니거나, 회원 입력이 제대로 완료되지 않았습니다.");
 				}
