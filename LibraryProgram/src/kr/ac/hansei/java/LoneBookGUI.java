@@ -1,6 +1,6 @@
 /*
  * class명: LoneBookGUI
- * last update: 21.12.03
+ * last update: 21.12.16
  * Contributor : kimjaehoon, jeongyunmi
  * summary : 메뉴 중 대출 탭을 클릭했을 때 나오는 GUI를 담은 class
  * 			 회원정보 출력 JPanel, 자료 정보 출력 JPanel, 대출 버튼을 포함하고 있다.
