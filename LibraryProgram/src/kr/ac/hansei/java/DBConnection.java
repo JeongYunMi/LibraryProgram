@@ -1,3 +1,10 @@
+/*
+ * class명: DBConnection
+ * last update: 21.12.16
+ * Contributor : kimjaehoon, jeongyunmi
+ * summary : 프로그램 내 DB와 관련된 처리를 맡아서 해주는 class
+ * */
+
 package kr.ac.hansei.java;
 
 import java.awt.Font;
@@ -136,7 +143,12 @@ public class DBConnection{
 		 }
 
 	 }
-		 
+	 
+	 /*
+	  * 멤버 삭제 메소드
+	  * String 값으로 받아온 number를 통해 MemberInfo의 memberNum 중 number와
+	  * 같은 값이 데이터를 찾아 삭제한다.
+	  * */
 	 public void DeleteMember(String number) {
 		 try {
 		     	
@@ -153,7 +165,12 @@ public class DBConnection{
 		 }
 
 	 }
-		 
+	
+	 /*
+	  * 회원 정보 조회 메소드
+	  * MemberInfo의 모든 데이터를 받아와 DefaultTableModel 형태로 정리하여
+	  * DefaultTableModel 타입의 변수를 반환한다.
+	  * */
 	 public DefaultTableModel GetMemberData() {      
 		 try {
 			 
@@ -174,6 +191,12 @@ public class DBConnection{
 		 }finally { 	   
 		 }
 	 }
+	 
+	 /*
+	  * 책 대출시 대출할 회원을 조회하는 메소드
+	  * MemberInfo에서 String 타입으로 넘어온 number가 "memberNum"필드와 동일한
+	  * 데이터를 뽑아 문자열로 정리하여 반환한다.
+	  * */
 	 public String GetRentalMember(String number) {
 		 DBCursor cursor = null;
 		 DBCollection coll = db.getCollection("MemberInfo");
@@ -192,7 +215,12 @@ public class DBConnection{
 		 }
 		 return rentalMemberStr;
 	 }
-		 
+	 
+	 /*
+	  * 책 대출시 대출할 책을 조회하는 메소드
+	  * BookInfo에서 String 타입으로 넘어온 number가 "BookNumber"필드와 동일한
+	  * 데이터를 뽑아 문자열로 정리하여 반환한다.
+	  * */	 
 	 public String GetRentalBook(String number) {
 		 DBCursor cursor = null;
 		 DBCollection coll = db.getCollection("BookInfo");
@@ -215,6 +243,12 @@ public class DBConnection{
 		 return rentalBookStr;
 	 }
 		 
+	 /*
+	  * 책 대출 데이터를 처리해주는 메소드
+	  * Booknumber를 통해 빌릴 책을 조회하여
+	  * 현재 날짜와 7일 뒤의 날짜, memberNumber 데이터를 각각 
+	  * loanDate, returnDate, loanPerson 값으로 update한다.
+	  * */
 	 public void AddRentalBook(String Booknumber, String memberNumber) throws ParseException {
 		 DBCursor cursor = null;
 		 DBCollection coll = db.getCollection("BookInfo");

@@ -1,6 +1,6 @@
 /*
  * class명: MemberManagementGUI
- * last update: 21.12.03
+ * last update: 21.12.16
  * Contributor : kimjaehoon, jeongyunmi
  * summary : 메뉴 중 멤버 관리 탭을 클릭했을 때 나오는 GUI를 담은 class
  * 			 멤버 정보 목록을 가지는 JTable과 멤버 관리 관련 버튼(조회,검색, 등록, 삭제 등)을 가지고 있다.
@@ -90,7 +90,9 @@ class MemberManagementGUI extends JPanel{
 		MemberInfoTable.setModel(model);
 	        	
 	        
-	        
+	    /*
+	     * 버튼 이벤트
+	     * */
 		MemberAdd.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {

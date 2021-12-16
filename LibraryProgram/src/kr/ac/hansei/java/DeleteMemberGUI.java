@@ -1,3 +1,10 @@
+/*
+ * class¸í: DeleteMemberGUI
+ * last update: 21.12.16
+ * Contributor : jeongyunmi
+ * summary : ¸Ş´º Áß È¸¿ø °ü¸® ÅÇÀ» Å¬¸¯ÇßÀ» ¶§ ³ª¿À´Â GUI¿¡¼­ È¸¿ø»èÁ¦ ¹öÆ°À» Å¬¸¯ÇÏ¸é È£ÃâµÉ GUI ´ãÀº class
+ * */
+
 package kr.ac.hansei.java;
 
 import java.awt.FlowLayout;
@@ -18,19 +25,32 @@ public class DeleteMemberGUI extends JFrame {
 	private JTextField TextMemberNum;
 	
 	public DeleteMemberGUI() {
+		/*
+		 * È£ÃâµÇ¸é ÇØ´ç Å¬·¡½ºÀÇ GUI¸¦ º¸ÀÌ°ÔÇÑ´Ù.
+		 * ±×¸®µå ·¹ÀÌ¾Æ¿ôÀ¸·Î ¼±¾ğ
+		 * */
 		setVisible(true);
 		setLayout(new GridLayout(3, 1, 10, 0));
 		setBounds(0, 0, 400, 200);
 		
-		JLabel LabelDelMember = new JLabel("ë©¤ë²„ ì‚­ì œ");
+		/*
+		 * LabelDelMember: "¸â¹ö »èÁ¦"¶ó´Â ±ÛÀÚ¸¦ Ãâ·ÂÇÒ ¶óº§ 
+		 * */
+		JLabel LabelDelMember = new JLabel("¸â¹ö »èÁ¦");
 		LabelDelMember.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelDelMember.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 40));
+		LabelDelMember.setFont(new Font("±¼¸²", Font.PLAIN, 40));
         add(LabelDelMember);
         
+        /*
+         * PanelInputNumber: È¸¿ø ÀÌ¸§À» ¹Ş´Â GUIµéÀÌ ´ã±æ ÆÇ³Ú, ÇÃ·Î¿ì ·¹ÀÌ¾Æ¿ôÀ¸·Î ¼³Á¤
+         * LabelNumber: "»èÁ¦ÇÒ ¸â¹öÀÇ È¸¿ø ¹øÈ£: " ¶óº§ 
+         * TextMemberNum: »èÁ¦ÇÒ ¸â¹öÀÇ È¸¿ø ¹øÈ£¸¦ ÀÔ·Â¹ŞÀ» JTextField
+         * */
         JPanel PanelInputNumber = new JPanel();
         PanelInputNumber.setLayout(new FlowLayout());
-        JLabel LabelNumber = new JLabel("ì‚­ì œí•  íšŒì› ë²ˆí˜¸: ");
-        LabelNumber.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 24));
+        
+        JLabel LabelNumber = new JLabel("»èÁ¦ÇÒ ¸â¹öÀÇ È¸¿ø ¹øÈ£: ");
+        LabelNumber.setFont(new Font("±¼¸²", Font.PLAIN, 24));
         PanelInputNumber.add(LabelNumber);
         
         TextMemberNum = new JTextField();
@@ -38,8 +58,14 @@ public class DeleteMemberGUI extends JFrame {
         PanelInputNumber.add(TextMemberNum);  
         add(PanelInputNumber);
         
-        JButton ButtonDelMember = new JButton("íšŒì› ì‚­ì œ");
-        ButtonDelMember.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 24));
+        
+        /*
+         * ButtonDelMember: È¸¿ø »èÁ¦¸¦ ÇÏ°íÀÚ ÇÒ ¶§ Å¬¸¯ÇÒ ¹öÆ°
+         * addActionListener·Î ÀÔ·ÂÇÑ Á¤º¸¸¦ DbConnection Å¬·¡½ºÀÇ DeleteMember·Î º¸³½´Ù.
+         * ÀÌÈÄ Ã¢À» ¾Èº¸ÀÌ°Ô Ã³¸®
+         * */
+        JButton ButtonDelMember = new JButton("È¸¿ø »èÁ¦");
+        ButtonDelMember.setFont(new Font("±¼¸²", Font.PLAIN, 24));
         add(ButtonDelMember);
         
         ButtonDelMember.addActionListener(new ActionListener() {

@@ -35,7 +35,7 @@ class LoneBookGUI extends JPanel {
 
 public LoneBookGUI() {
 	/*
-	 * 기본 레이아웃을 GridLayout으로 설정
+	 * 기본 레이아웃을 BorderLayout으로 설정
 	 * 회원정보와 자료 정보를 수직으로 출력
 	 * */
 	setLayout(new BorderLayout(20, 10));
@@ -160,7 +160,9 @@ public LoneBookGUI() {
     
     
     
-    
+    /*
+     * 회원 조회 버튼을 클릭하면 생길 이벤트
+     * */
     MemberSearchbtn.addActionListener(new ActionListener() {
 		
 		@Override
@@ -179,6 +181,9 @@ public LoneBookGUI() {
 		}
 	});
     
+    /*
+     * 책 조회버튼을 클릭하면 생길 이벤트
+     * */
     BookSearchbtn.addActionListener(new ActionListener() {
 		
 		@Override
@@ -208,7 +213,9 @@ public LoneBookGUI() {
 		}
 	});
     
-    
+    /*
+     * 조회된 정보를 바탕으로 대출을 수행하는 버튼 이벤트
+     * */
     btnNewButton.addActionListener(new ActionListener() {
 		
 		@Override
