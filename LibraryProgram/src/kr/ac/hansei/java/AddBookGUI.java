@@ -38,7 +38,7 @@ class AddBookGUI extends JFrame{
 		panel.setLayout(null);
 	   
 		/*
-		 * 
+		 * 책 정보를 받기위한 텍스트필드
 		 */
 		TextBNumber = new JTextField();
 		TextBNumber.setBounds(159, 206, 242, 21);
@@ -105,6 +105,7 @@ class AddBookGUI extends JFrame{
         	 if(e.getSource()==BtnAddBtn) {
         		DbConnection.AddBook(TextBNumber.getText(), TextBName.getText(), TextBAuthor.getText(),
         				 TextReleaseDate.getText(),TextBPublisher.getText());
+        		frame.setVisible(false);
             }
          }   
       });

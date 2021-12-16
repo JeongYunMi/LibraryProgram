@@ -118,3 +118,4 @@ class MemberManagementGUI extends JPanel{
 		});
 	}
 }
+

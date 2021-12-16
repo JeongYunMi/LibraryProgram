@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -64,7 +65,8 @@ public class DBConnection{
 		 coll.insert(documentDetail);
 		 JOptionPane.showMessageDialog(null, "추가했습니다");
 	 }
-	
+
+
 	 /*
 	  * JTable에 DB연동하기
 	  */
@@ -111,8 +113,7 @@ public class DBConnection{
 			 collection.remove(query);
 			   
 			 JOptionPane.showMessageDialog(null, "삭제했습니다");
-			   
-			 mongoClient.close();
+			 
 		 }finally {
 		 }  
 	 }	
@@ -130,14 +131,13 @@ public class DBConnection{
 			 //Insert Data01
 			 collection.insert(document);
 		
-			 mongoClient.close();
+			
 		 }finally {
-			 if(mongoClient!=null)
-				 mongoClient.close();
 		 }
+
 	 }
 		 
-	 public void DeleteMember(int number) {
+	 public void DeleteMember(String number) {
 		 try {
 		     	
 			 DBCollection collection = db.getCollection("MemberInfo");
@@ -151,6 +151,7 @@ public class DBConnection{
 			 mongoClient.close();
 		 }finally {		
 		 }
+
 	 }
 		 
 	 public DefaultTableModel GetMemberData() {      
@@ -230,15 +231,9 @@ public class DBConnection{
 		 updateList.append("loanPerson", memberNumber);
 		 updateList.append("loanDate", format.format(now));
 		 updateList.append("returnDate", format.format(cal.getTime()));
-			 /*
-			 updateQuery.append("$set", new BasicDBObject().append("loanPerson", memberNumber));
-			 updateQuery.append("$set", new BasicDBObject().append("loanDate", format.format(now)));
-			 updateQuery.append("$set", new BasicDBObject().append("returnDate", format.format(cal.getTime())));
-			 */
 		 updateQuery.append("$set", updateList);
 		 BasicDBObject searchQuery = new BasicDBObject().append("BookNumber", Booknumber);
-		 coll.update(searchQuery, updateQuery);
-		     
+		 coll.update(searchQuery, updateQuery);		     
 	 
 		 JOptionPane.showMessageDialog(null, "성공적으로 대여하였습니다. 반납일은"+format.format(cal.getTime())+"입니다.");
 	 }
@@ -266,8 +261,7 @@ public class DBConnection{
 			 rentalBookStr += "," + (String)obj.get("releasedate");
 			 rentalBookStr += "," + (String)obj.get("publisher");
 			 rentalBookStr += "," + (String)obj.get("loanPerson");
-		 }
-			 
+		 }		 
 		 return rentalBookStr;
 	 }
 		 
@@ -286,8 +280,9 @@ public class DBConnection{
 		 
 		 updateQuery.append("$set", updateList);
 		 BasicDBObject searchQuery = new BasicDBObject().append("BookNumber", BookNum);
-		 coll.update(searchQuery, updateQuery);
-		     		 
+		 coll.update(searchQuery, updateQuery); 		 
 	 }
 }
+
+	
 

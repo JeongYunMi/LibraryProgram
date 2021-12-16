@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class DeleteBookGUI {
+	
 	private static DBConnection DbConnection = new DBConnection();
 
 	public static void DeleteBookGUI() {
@@ -35,13 +36,10 @@ public class DeleteBookGUI {
 		lblNewLabel.setBounds(0, 10, 588, 146);
 		panel.add(lblNewLabel);
 		
-		
 		JTextField textBNumber = new JTextField();
 		textBNumber.setBounds(159, 166, 196, 23);
 		panel.add(textBNumber);
-		
-		
-		
+			
 		JButton btnNewButton = new JButton("삭제");	
 		btnNewButton.setBounds(0, 618, 575, 140);
 		panel.add(btnNewButton);
