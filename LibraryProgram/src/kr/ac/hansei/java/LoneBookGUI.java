@@ -34,7 +34,6 @@ class LoneBookGUI extends JPanel {
    boolean possibleMember = false;
 
 public LoneBookGUI() {
-<<<<<<< HEAD
 	/*
 	 * 기본 레이아웃을 BorderLayout으로 설정
 	 * 회원정보와 자료 정보를 수직으로 출력
@@ -55,28 +54,6 @@ public LoneBookGUI() {
 	SearchMamberPane.add(MemberSearchLabel);
 	
 	TextMemberNum = new JTextField();
-=======
-   /*
-    * 기본 레이아웃을 BorderLayout으로 설정
-    * 회원정보와 자료 정보를 수직으로 출력
-    * */
-   setLayout(new BorderLayout(20, 10));
-   setBounds(0, 0, 1500, 1000);
-   
-   JPanel SearchInfoPane = new JPanel();
-   SearchInfoPane.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 10));
-   add(SearchInfoPane, BorderLayout.NORTH);
-   
-   JPanel SearchMamberPane = new JPanel();
-   SearchMamberPane.setLayout(new FlowLayout(FlowLayout.CENTER));
-   SearchInfoPane.add(SearchMamberPane);
-   
-   JLabel MemberSearchLabel = new JLabel("회원 번호: ");
-   MemberSearchLabel.setFont(new Font("돋움", Font.PLAIN, 22));
-   SearchMamberPane.add(MemberSearchLabel);
-   
-   TextMemberNum = new JTextField();
->>>>>>> Final
     TextMemberNum.setColumns(15);
     SearchMamberPane.add(TextMemberNum);
     
@@ -207,9 +184,7 @@ public LoneBookGUI() {
     /*
      * 책 조회버튼을 클릭하면 생길 이벤트
      * */
-    BookSearchbtn.addActionListener(new ActionListener() {
-<<<<<<< HEAD
-		
+    BookSearchbtn.addActionListener(new ActionListener() {		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
@@ -235,37 +210,7 @@ public LoneBookGUI() {
 				JOptionPane.showMessageDialog(null, "일치하는 책 정보가 없습니다.");
 			}
 		}
-	});
-=======
-      
-      @Override
-      public void actionPerformed(ActionEvent e) {
-         // TODO Auto-generated method stub
-         String temp = DbConnection.GetRentalBook(TextBookNum.getText());;
-         book = temp.split(",");
-         
-         if(temp.endsWith(",")) {
-            possibleBook = true;
-         }
-         
-         if(temp != "") {
-            BookNameLabel.setText("책 이름: " + book[0]);
-            BookNumberLabel.setText("책 번호: " + book[1]);
-            BookAuthorLabel.setText("지은이: " + book[2]);
-            BookdateLabel.setText("출판일: " + book[3]);
-            BookPubLabel.setText("출판사: " + book[4]);
-            if(possibleBook) {
-               BookRentalLabel.setText("책 대여 가능 여부: 가능");
-            }else{
-               BookRentalLabel.setText("책 대여 가능 여부: 불가");
-            }      
-         }else {
-            JOptionPane.showMessageDialog(null, "일치하는 책 정보가 없습니다.");
-         }
-      }
-   });
->>>>>>> Final
-    
+	});   
     /*
      * 조회된 정보를 바탕으로 대출을 수행하는 버튼 이벤트
      * */
