@@ -23,27 +23,26 @@ import javax.swing.SwingConstants;
 
 public class AddMemberGUI extends JFrame {
 
-	private DBConnection DbConnection = new DBConnection();
-	private JTextField TextMemberNum;
-	private JTextField TextMemberName;
-	private JTextField TextMemberPhone;
-	
-	public AddMemberGUI() {
-		/*
-		 * 호출되면 해당 클래스의 GUI를 보이게한다.
-		 * 그리드 레이아웃으로 선언
-		 * */
-		setVisible(true);
-		setLayout(new GridLayout(5, 1, 10, 0));
-		setBounds(0, 0, 800, 500);
-		
-		/*
-		 * LabelAddMember: "멤버 추가"라는 글자를 출력할 라벨 
-		 * */
-		JLabel LabelAddMember = new JLabel("멤버 추가");
-		LabelAddMember.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelAddMember.setFont(new Font("굴림", Font.PLAIN, 40));
- 
+   private DBConnection DbConnection = new DBConnection();
+   private JTextField TextMemberNum;
+   private JTextField TextMemberName;
+   private JTextField TextMemberPhone;
+   
+   public AddMemberGUI() {
+      /*
+       * 호출되면 해당 클래스의 GUI를 보이게한다.
+       * 그리드 레이아웃으로 선언
+       * */
+      setVisible(true);
+      setLayout(new GridLayout(5, 1, 10, 0));
+      setBounds(0, 0, 800, 500);
+      
+      /*
+       * LabelAddMember: "멤버 추가"라는 글자를 출력할 라벨 
+       * */
+      JLabel LabelAddMember = new JLabel("멤버 추가");
+      LabelAddMember.setHorizontalAlignment(SwingConstants.CENTER);
+      LabelAddMember.setFont(new Font("굴림", Font.PLAIN, 40));
         add(LabelAddMember);
         
         /*
